@@ -1,11 +1,12 @@
-package com.springdemo.hellow;
+package com.springdemo.hellow.controllers;
 
+import com.springdemo.hellow.model.Problem;
 import com.springdemo.hellow.repository.ProblemRepository;
 //import com.springdemo.hellow.repository.ProductRepository;
+import com.springdemo.hellow.services.ProblemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWController {
@@ -32,8 +33,5 @@ public class HelloWController {
         return ResponseEntity.ok(this.productRepository.findAll());
     }*/
 
-    @GetMapping("/problem")
-    public ResponseEntity getAll() {
-        return ResponseEntity.ok(this.problemRepository.findById(1L));
-    }
+
 }

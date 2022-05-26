@@ -18,14 +18,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    private String email;
-    private String password;
+    private int barcode;
 
-    @OneToMany(mappedBy = "problemId", fetch = FetchType.LAZY)
-    private List<Problem> problemList = new ArrayList<>();
-
+    public User(Long id){
+        this.id = id;
+    }
 }
