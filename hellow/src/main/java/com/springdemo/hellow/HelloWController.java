@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWController {
     @RequestMapping
-    public String helloWorld(){
+    public String helloWorld() {
         return "Hello World From Spring Boot";
     }
+
     @RequestMapping("/goodbye")
     public String goodbye() {
         return "Goodbye from Spring Boot";
     }
+
     //private final ProductRepository productRepository;
     private final ProblemRepository problemRepository;
 

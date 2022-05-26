@@ -17,10 +17,8 @@ public class Status {
     @Id
     private Long statusId;
     private String statusName;
-    @OneToMany(mappedBy="problemId",fetch= FetchType.LAZY)
+    @OneToMany(mappedBy = "problemId", fetch = FetchType.LAZY)
     private List<Problem> problemList = new ArrayList<>();
-
-
 
 
 }

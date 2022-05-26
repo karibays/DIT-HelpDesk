@@ -18,8 +18,8 @@ public class CheckHTTPResponce {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    public void shouldPassIfStringMatches(){
+    public void shouldPassIfStringMatches() {
         assertEquals("Hello World From Spring Boot", testRestTemplate.getForObject("http://localhost:" + port + "/",
-                String.class ));
+                String.class));
     }
 }

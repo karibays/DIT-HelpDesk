@@ -18,10 +18,8 @@ public class Category {
     private Long categoryId;
     private String categoryName;
 
-    @OneToMany(mappedBy="problemId",fetch= FetchType.LAZY)
+    @OneToMany(mappedBy = "problemId", fetch = FetchType.LAZY)
     private List<Problem> problemList = new ArrayList<>();
-
-
 
 
 }
