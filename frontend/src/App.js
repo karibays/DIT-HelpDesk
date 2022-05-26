@@ -11,7 +11,6 @@ function App() {
           <Route path="categories" element={<Categories />} />
           <Route path="forum" element={<Forum />} />
           <Route path="ticket" element={<Ticket />} />
-          <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
     </div>
