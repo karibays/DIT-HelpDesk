@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.springdemo.hellow.model.Problem;
+import com.springdemo.hellow.model.User;
+import com.springdemo.hellow.repository.UserRepository;
 import com.springdemo.hellow.requests.ProblemRequest;
 import com.springdemo.hellow.repository.ProblemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ProblemService {
 
     @Autowired
-    ProblemRepository problemRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProblemRepository problemRepository;
 
 
     public Problem create(ProblemRequest request) {
@@ -20,9 +25,8 @@ public class ProblemService {
         return problemRepository.save(new Problem(request));
     }
 
-    public List<Problem> get() {
-        System.out.println(problemRepository.findAll());
-
-        return problemRepository.findAll();
+    public List<Problem> getProblemsByUserId(long id) {
+        User user = userRepository.getUserById(id);
+        return problemRepository.findProblemsByUser(user);
     }
 }

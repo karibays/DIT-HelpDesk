@@ -12,14 +12,4 @@ import java.util.Date;
 @Setter
 public class ProblemGetRequest {
     private Long user_id;
-
-    public User getUser(){
-        User user = new User(this.user_id);
-        System.out.println(user);
-        return user;
-    }
-
-    public Long getUser_id(){
-        return this.user_id;
-    }
 }

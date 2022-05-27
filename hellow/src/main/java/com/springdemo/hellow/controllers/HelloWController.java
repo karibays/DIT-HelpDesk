@@ -28,10 +28,11 @@ public class HelloWController {
         this.problemRepository = problemRepository;
     }
 
-    /*@GetMapping("/product")
+/*GetMapping("/product")
     public ResponseEntity getAllProducts() {
         return ResponseEntity.ok(this.productRepository.findAll());
     }*/
+
 
 
 }

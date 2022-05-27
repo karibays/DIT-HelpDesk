@@ -2,7 +2,9 @@ package com.springdemo.hellow.requests;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.springdemo.hellow.model.User;
+import com.springdemo.hellow.repository.UserRepository;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -17,9 +19,11 @@ public class ProblemRequest {
     private Long user_id;
     private Date date;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public User getUser(){
-        User user = new User(this.user_id);
-        System.out.println(user);
+        User user = userRepository.getUserById(this.user_id);
         return user;
     }
 }
