@@ -23,7 +23,7 @@ public class ProblemRequest {
     private UserRepository userRepository;
 
     public User getUser(){
-        User user = userRepository.getUserById(this.user_id);
+        User user = new User(this.user_id);
         return user;
     }
 }
