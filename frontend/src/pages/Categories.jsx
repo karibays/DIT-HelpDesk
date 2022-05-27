@@ -1,7 +1,13 @@
 import React from "react";
+import NavBar from "../components/NavBar";
 
 const Categories = () => {
-  return <div>Categories</div>;
+  return (
+    <div>
+      <NavBar />
+      Categories
+    </div>
+  );
 };
 
 export default Categories;

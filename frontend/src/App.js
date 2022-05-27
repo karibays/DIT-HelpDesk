@@ -1,5 +1,5 @@
 import "./App.css";
-import { Categories, Forum, MainPage, NoPage, Ticket } from "./pages";
+import { Categories, Forum, MainPage, NoPage, Ticket, Profile } from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
           <Route path="categories" element={<Categories />} />
           <Route path="forum" element={<Forum />} />
           <Route path="ticket" element={<Ticket />} />
+          <Route path="profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>
