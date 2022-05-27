@@ -7,7 +7,7 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            Navbar
+            AITU Help Desk
           </Link>
           <button
             className="navbar-toggler"
@@ -41,7 +41,7 @@ const NavBar = () => {
             </ul>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to="/profile" className="btn btn-outline-info">
+                <Link to="/profile" className="btn btn-outline-info btn-sm">
                   Личный кабинет
                 </Link>
               </li>

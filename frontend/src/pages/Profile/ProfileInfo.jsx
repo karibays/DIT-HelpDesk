@@ -1,34 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css";
 
 const ProfileInfo = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [barcode, setBarcode] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const randNum = Math.floor(Math.random() * 10) + 1;
+
+    Promise.all([
+      fetch("https://loremflickr.com/180/180/cat"),
+      fetch(`https://jsonplaceholder.typicode.com/users/${randNum}`),
+    ])
+      .then((res) => {
+        const imgUrl = res[0].url;
+        const user = res[1].json();
+        setImgUrl(imgUrl);
+        return user;
+      })
+      .then(({ name, email, username }) => {
+        setName(name);
+        setEmail(email);
+        setBarcode(username);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="container">
-      <div className="jumbotron d-flex flex">
-        <img
-          src={
-            "https://sun1.dataix-kz-akkol.userapi.com/s/v1/ig2/u7R7LCKVaPlAR9-V48QD30E6ndG6HvAIfZZH5sl-m9g39tGIfL9hx-WcuyEObZckwfX_x843nQTLG2vUKRpvkI5f.jpg?size=684x694&quality=96&type=album"
-          }
-          className="profile-image"
-          alt=""
-        />
-        <div className="">
-          <h4>Алибек Момбеков</h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Почта:</span>
-              <span>alibek.mombekov@mail.ru</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Barcode:</span>
-              <span>203028</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Foo:</span>
-              <span>True</span>
-            </li>
-          </ul>
-        </div>
+      <div className="jumbotron">
+        {loading ? (
+          <h4 className="loading text-muted">Loading...</h4>
+        ) : (
+          <>
+            <img src={imgUrl} className="profile-image" alt="" />
+            <div>
+              <h4>{name}</h4>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  <span className="term">Почта:</span>
+                  <span>{email}</span>
+                </li>
+                <li className="list-group-item">
+                  <span className="term">Barcode:</span>
+                  <span>{barcode}</span>
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
