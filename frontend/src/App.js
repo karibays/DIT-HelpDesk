@@ -1,5 +1,13 @@
 import "./App.css";
-import { Categories, Forum, MainPage, NoPage, Ticket, Profile } from "./pages";
+import {
+  Categories,
+  Forum,
+  MainPage,
+  NoPage,
+  Ticket,
+  Profile,
+  Login,
+} from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,6 +20,7 @@ function App() {
           <Route path="forum" element={<Forum />} />
           <Route path="ticket" element={<Ticket />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

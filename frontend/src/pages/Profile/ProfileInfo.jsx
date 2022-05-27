@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import "./Profile.css";
 
 const ProfileInfo = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [barcode, setBarcode] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [loading, setLoading] = useState(true);
-
+  const [cookies, setCookies] = useCookies("");
   useEffect(() => {
     const randNum = Math.floor(Math.random() * 10) + 1;
 
@@ -24,7 +25,7 @@ const ProfileInfo = () => {
       .then(({ name, email, username }) => {
         setName(name);
         setEmail(email);
-        setBarcode(username);
+        setBarcode(cookies.barcode);
         setLoading(false);
       });
   }, []);
