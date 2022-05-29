@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 const Ticket = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar lightMode={true} />
       Ticket
     </div>
   );

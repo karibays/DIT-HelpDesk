@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -14,6 +14,17 @@ const Login = () => {
     });
     navigate("/");
   }
+
+  useEffect(() => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ barcode: "5412" }),
+    };
+    fetch("http://10.1.11.249:8080/problem/get_user_id", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
 
   return (
     <div>

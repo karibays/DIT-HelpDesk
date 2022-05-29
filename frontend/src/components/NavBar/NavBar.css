@@ -1,0 +1,46 @@
+.nav-link-blue {
+  color: black;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-link-white {
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-brand-black {
+  color: black;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-brand-white {
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-outline-light {
+  color: white;
+  border-color: white;
+}
+
+.btn-outline-info {
+  color: black;
+  border-color: black;
+}
+
+.nav-link-blue:hover,
+.navbar-brand-white:hover {
+  color: #252525;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-link-white:hover,
+.navbar-brand-black:hover {
+  color: #252525;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-outline-light:hover {
+  color: black;
+  background-color: white;
+}

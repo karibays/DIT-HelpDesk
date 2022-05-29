@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 const Forum = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar lightMode={true} />
       Forum
     </div>
   );

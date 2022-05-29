@@ -12,22 +12,26 @@ const ProfileInfo = () => {
   useEffect(() => {
     const randNum = Math.floor(Math.random() * 10) + 1;
 
-    Promise.all([
-      fetch("https://loremflickr.com/180/180/cat"),
-      fetch(`https://jsonplaceholder.typicode.com/users/${randNum}`),
-    ])
-      .then((res) => {
-        const imgUrl = res[0].url;
-        const user = res[1].json();
-        setImgUrl(imgUrl);
-        return user;
-      })
-      .then(({ name, email, username }) => {
-        setName(name);
-        setEmail(email);
-        setBarcode(cookies.barcode);
-        setLoading(false);
-      });
+    // Promise.all([
+    //   fetch("https://loremflickr.com/180/180/cat"),
+    //   fetch(`https://jsonplaceholder.typicode.com/users/${randNum}`),
+    // ])
+    //   .then((res) => {
+    //     const imgUrl = res[0].url;
+    //     const user = res[1].json();
+    //     console.log(res[2]);
+    //     setImgUrl(imgUrl);
+    //     return user;
+    //   })
+    //   .then(({ name, email }) => {
+    //     setName(name);
+    //     setEmail(email);
+    //     setBarcode(cookies.barcode);
+    //     setLoading(false);
+    //   });
+    fetch("http://10.1.11.249:8080/problem/get_all_problems/1").then((res) =>
+      console.log(res)
+    );
   }, []);
 
   return (
