@@ -19,6 +19,14 @@ const NavBar = ({ lightMode }) => {
     ? "btn btn-outline-info  align-middle"
     : "btn btn-outline-light  align-middle";
 
+  const navbarTogglerClasses = lightMode
+    ? "navbar-toggler navbar-toggler-black"
+    : "navbar-toggler navbar-toggler-light";
+
+  const navbarTogglerIconClasses = lightMode
+    ? "navbar-toggler-icon navbar-toggler-icon-black"
+    : "navbar-toggler-icon navbar-toggler-icon-light";
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg" style={backgroundColor}>
@@ -27,7 +35,7 @@ const NavBar = ({ lightMode }) => {
             AITU Help Desk
           </Link>
           <button
-            className="navbar-toggler"
+            className={navbarTogglerClasses}
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarColor01"
@@ -35,7 +43,7 @@ const NavBar = ({ lightMode }) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className={navbarTogglerIconClasses}></span>
           </button>
 
           <div className="collapse navbar-collapse" id="navbarColor01">
