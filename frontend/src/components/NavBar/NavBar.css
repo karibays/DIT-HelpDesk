@@ -45,6 +45,10 @@
   background-color: white;
 }
 
+.navbar-img {
+  height: 40px;
+}
+
 .navbar-toggler-black {
   border: 1px solid black;
 }

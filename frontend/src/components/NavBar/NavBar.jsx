@@ -32,7 +32,7 @@ const NavBar = ({ lightMode }) => {
       <nav className="navbar navbar-expand-lg" style={backgroundColor}>
         <div className="container-fluid">
           <Link to="/">
-            <img src={logoColor} alt="AITU Help Desk" />
+            <img src={logoColor} className="navbar-img" alt="AITU Help Desk" />
           </Link>
           <button
             className={navbarTogglerClasses}

@@ -13,7 +13,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts start",
+    "start": "set PORT=8080 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -38,6 +38,5 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.3.0"
-  },
-  "proxy": "http://10.1.11.249:8080/"
+  }
 }
