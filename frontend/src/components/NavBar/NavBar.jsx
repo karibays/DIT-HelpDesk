@@ -1,5 +1,7 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import logo from "../../img/logo/logo.svg";
+import logoLight from "../../img/logo/logo_light.svg";
 import "./NavBar.css";
 
 const NavBar = ({ lightMode }) => {
@@ -7,17 +9,15 @@ const NavBar = ({ lightMode }) => {
     ? { backgroundColor: "white" }
     : { backgroundColor: "#2c8dff" };
 
-  const logoColorClasses = lightMode
-    ? "navbar-brand navbar-brand-black"
-    : "navbar-brand navbar-brand-white";
+  const logoColor = lightMode ? logo : logoLight;
 
   const textColorClasses = lightMode
     ? "nav-link nav-link-blue align-middle"
     : "nav-link nav-link-white align-middle";
 
   const ticketBtnClasses = lightMode
-    ? "btn btn-outline-info  align-middle"
-    : "btn btn-outline-light  align-middle";
+    ? "btn btn-outline-info align-middle"
+    : "btn btn-outline-light align-middle";
 
   const navbarTogglerClasses = lightMode
     ? "navbar-toggler navbar-toggler-black"
@@ -31,8 +31,8 @@ const NavBar = ({ lightMode }) => {
     <div>
       <nav className="navbar navbar-expand-lg" style={backgroundColor}>
         <div className="container-fluid">
-          <Link to="/" className={logoColorClasses}>
-            AITU Help Desk
+          <Link to="/">
+            <img src={logoColor} alt="AITU Help Desk" />
           </Link>
           <button
             className={navbarTogglerClasses}

@@ -1,12 +1,14 @@
 import React from "react";
 import NavBar from "../../components/NavBar";
 import ProfileInfo from "./ProfileInfo";
+import ChatList from "./ChatList";
 
 const Profile = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar lightMode={true} />
       <ProfileInfo />
+      <ChatList />
     </div>
   );
 };
