@@ -56,7 +56,7 @@ const ProfileInfo = () => {
 
         setName(`${first} ${last}`);
         setEmail(email);
-        setBarcode(cookies.barcode);
+        setBarcode(localStorage.getItem("barcode"));
         setLoading(false);
       })
       .catch((err) => {

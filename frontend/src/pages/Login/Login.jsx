@@ -9,21 +9,26 @@ const Login = () => {
   const [cookies, setCookie] = useCookies(["user"]);
 
   function handleCookie() {
-    setCookie("barcode", barcode, {
-      path: "/",
-    });
+    localStorage.setItem("barcode", barcode);
+    // setCookie("barcode", barcode, {
+    // path: "/",
+    // });
+
     navigate("/");
   }
 
   useEffect(() => {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ barcode: "5412" }),
     };
     fetch("http://10.1.11.249:8080/problem/get_user_id", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (

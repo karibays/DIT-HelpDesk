@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./App.css";
 import {
   Categories,
@@ -8,14 +9,22 @@ import {
   Profile,
   Login,
 } from "./pages";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { fetchUser } from "../src/utils/fetchUser";
 
-function App() {
+const App = () => {
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    // const User = fetchUser();
+    // if (!User) navigate("/login");
+  }, []);
+
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/*" element={<MainPage />} />
           <Route path="categories" element={<Categories />} />
           <Route path="forum" element={<Forum />} />
           <Route path="ticket" element={<Ticket />} />
@@ -25,6 +34,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
