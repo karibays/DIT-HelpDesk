@@ -1,0 +1,34 @@
+.mainDiv {
+    background-color: #2C8DFF;
+    text-align: center;
+    display: block;
+}
+
+.mainHeader {
+    font-family: "Times New Roman", serif;
+    color: white;
+    font-weight: 550;
+}
+
+.searchQuestion {
+    width: 900px;
+    height: 75px;
+    padding-left: 40px;
+    font-size: 25px;
+    margin-top: 18px;
+
+}
+
+.searchButton {
+    background: url("img/search_icon.png") no-repeat right top;
+    background-size: 73px;
+    height: 75px;
+    width: 75px;
+    margin-top: 18px;
+    padding-top: 20px;
+    background-color: white;
+}
+
+.searchQuestionForm {
+
+}
