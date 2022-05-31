@@ -10,6 +10,7 @@ import com.springdemo.hellow.services.ProblemGetService;
 import com.springdemo.hellow.services.ProblemService;
 import com.springdemo.hellow.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,5 +43,16 @@ public class ProblemController {
     @JsonView({Views.MyResponseViews.class})
     public List<Problem> getProblemsByUser(@PathVariable("id") long userId){
         return problemService.getProblemsByUserId(userId);
+    }
+
+    @GetMapping("deleteProblem/{id}")
+    public void deletePost(@PathVariable("id")Long id) {
+        problemService.deletePost(id);
+    }
+
+    @PostMapping("updatePost/{id}")
+    public void updatePost(@PathVariable("id")Long id, Problem inProblem) {
+        inProblem.setProblemId(id);
+        problemService.updateProblem(inProblem);
     }
 }

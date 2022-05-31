@@ -8,6 +8,7 @@ import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.repository.UserRepository;
 import com.springdemo.hellow.requests.ProblemRequest;
 import com.springdemo.hellow.repository.ProblemRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @org.springframework.stereotype.Service
@@ -29,4 +30,19 @@ public class ProblemService {
         User user = userRepository.getUserById(id);
         return problemRepository.findProblemsByUser(user);
     }
+
+    public void deletePost(Long postId) {
+        problemRepository.deleteById(postId);
+    }
+
+    public void updateProblem(Problem inProblem) {
+        Problem dbPost = problemRepository.getById(inProblem.getProblemId());
+        if(dbPost != null) {
+            dbPost.setDescription(inProblem.getDescription());
+            dbPost.setTitle(inProblem.getTitle());
+            problemRepository.save(dbPost);
+            BeanUtils.copyProperties(dbPost, inProblem);
+        }
+    }
+
 }

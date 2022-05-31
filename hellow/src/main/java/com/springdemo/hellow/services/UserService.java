@@ -2,6 +2,8 @@ package com.springdemo.hellow.services;
 
 import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.repository.UserRepository;
+import com.springdemo.hellow.requests.ProblemRequest;
+import com.springdemo.hellow.requests.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,7 @@ public class UserService {
     public User get_user_id(int barcode){
         return userRepository.getUsersByBarcode(barcode);
     }
+
+
 }
 
