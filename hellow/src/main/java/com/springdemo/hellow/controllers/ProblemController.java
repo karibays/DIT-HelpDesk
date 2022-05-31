@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @JsonView
 @RestController
+@CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
+//@CrossOrigin(origins = ["http://localhost:3000"], allowCredentials = "true")
 @RequestMapping(value = "/problem")
 public class ProblemController {
     @Autowired

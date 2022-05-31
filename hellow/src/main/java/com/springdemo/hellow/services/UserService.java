@@ -14,6 +14,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User get_user_id(int barcode){
+        System.out.println(barcode);
         return userRepository.getUsersByBarcode(barcode);
     }
 }
