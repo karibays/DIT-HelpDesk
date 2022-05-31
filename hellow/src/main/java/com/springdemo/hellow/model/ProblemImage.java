@@ -28,5 +28,4 @@ public class ProblemImage {
         this.date = problemImageRequest.getDate();
 
     }
-
 }
