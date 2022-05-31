@@ -31,7 +31,7 @@ public class ProblemService {
         return problemRepository.findProblemsByUser(user);
     }
 
-    public void deletePost(Long postId) {
+    public void deleteProblem(Long postId) {
         problemRepository.deleteById(postId);
     }
 

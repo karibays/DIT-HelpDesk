@@ -48,12 +48,12 @@ public class ProblemController {
     }
 
     @GetMapping("deleteProblem/{id}")
-    public void deletePost(@PathVariable("id")Long id) {
-        problemService.deletePost(id);
+    public void deleteProblem(@PathVariable("id")Long id) {
+        problemService.deleteProblem(id);
     }
 
     @PostMapping("updatePost/{id}")
-    public void updatePost(@PathVariable("id")Long id, Problem inProblem) {
+    public void updateProblem(@PathVariable("id")Long id, Problem inProblem) {
         inProblem.setProblemId(id);
         problemService.updateProblem(inProblem);
     }
