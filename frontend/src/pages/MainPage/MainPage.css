@@ -1,73 +1,69 @@
 .topDiv {
-    background-color: #2C8DFF;
-    text-align: center;
-    display: block;
+  background-color: #2c8dff;
+  text-align: center;
+  display: block;
 }
 
 .mainHeader {
-    font-family: "Times New Roman", serif;
-    color: white;
-    font-weight: 550;
-    padding-top: 150px;
-
+  color: white;
+  font-weight: 550;
+  padding-top: 150px;
 }
 
 .searchQuestion {
-    width: 900px;
-    height: 75px;
-    padding-left: 40px;
-    font-size: 25px;
-    margin-top: 18px;
-
+  width: 900px;
+  height: 75px;
+  padding-left: 40px;
+  font-size: 25px;
+  margin-top: 18px;
 }
 
 .searchButton {
-    background-size: 73px;
-    height: 75px;
-    width: 75px;
-    margin-top: 18px;
-    padding-top: 20px;
-    background-image: url("img/search_icon.png");
-    background-color: #2C63A5;
+  background-size: 73px;
+  height: 75px;
+  width: 75px;
+  margin-top: 18px;
+  padding-top: 20px;
+  background-image: url("img/search_icon.png");
+  background-color: #2c63a5;
 }
 
 .searchQuestionForm {
-    padding-bottom: 300px;
+  padding-bottom: 300px;
 }
 
 .FAQDiv {
-    background-color: lightgray;
-    text-align: center;
-    display: block;
+  background-color: lightgray;
+  text-align: center;
+  display: block;
 }
 
 .FAQHeader {
-    font-family: "Times New Roman", serif;
-    font-weight: bold;
-    padding-top: 40px;
+  font-weight: bold;
+  padding-top: 40px;
 }
 
 .FAQQuestionType {
-    display: inline-block;
-    width: 25%;
-    text-align: start;
-    padding-left: 150px;
+  display: inline-block;
+  width: 25%;
+  text-align: start;
+  padding-left: 150px;
 }
 
 .questionTypeHeader {
-    font-weight: bold;
-    font-size: 28px;
-    padding-left: 40px;
+  font-weight: bold;
+  font-size: 28px;
+  padding-left: 40px;
 }
 
 .questionsList {
-    list-style: none;
+  list-style: none;
 }
 
 .catalogButton {
-    background-color: #2C8DFF;
-    font-weight: 350;
-    color: white;
-    padding: 5px 25px;
-    margin-bottom: 50px;
+  background-color: #2c8dff;
+  font-weight: 350;
+  color: white;
+  padding: 5px 25px;
+  margin-bottom: 50px;
 }

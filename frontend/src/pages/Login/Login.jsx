@@ -14,6 +14,10 @@ const Login = () => {
     "form-control form-control-lg"
   );
 
+  function clearCookies() {
+    localStorage.clear();
+  }
+
   function handleCookie() {
     const form_data = new FormData();
     setloginInputClasses("form-control form-control-lg");
@@ -25,6 +29,7 @@ const Login = () => {
         },
       })
       .then(({ data }) => {
+        console.log(data);
         if (data) {
           setUser({ id: data.id, barcode: barcode });
           navigate("/");
@@ -36,6 +41,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.warn(error);
+        setError(true);
       });
   }
 
@@ -77,11 +83,14 @@ const Login = () => {
           />
 
           {error && (
-            <div class="invalid-feedback">Incorrect barcode entered</div>
+            <div className="invalid-feedback">Incorrect barcode entered</div>
           )}
 
           <button onClick={handleCookie} className="btn btn-primary login-btn">
-            Set Cookie
+            Login
+          </button>
+          <button onClick={clearCookies} className="btn btn-primary login-btn">
+            Clear Cookies
           </button>
         </div>
       </div>
