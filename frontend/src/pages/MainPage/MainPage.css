@@ -1,4 +1,4 @@
-.mainDiv {
+.topDiv {
     background-color: #2C8DFF;
     text-align: center;
     display: block;
@@ -8,6 +8,8 @@
     font-family: "Times New Roman", serif;
     color: white;
     font-weight: 550;
+    padding-top: 150px;
+
 }
 
 .searchQuestion {
@@ -20,15 +22,51 @@
 }
 
 .searchButton {
-    /* background: url("img/search_icon.png") no-repeat right top; */
     background-size: 73px;
     height: 75px;
     width: 75px;
     margin-top: 18px;
     padding-top: 20px;
-    background-color: white;
+    background: white url("img/search_icon.png") no-repeat right top;
 }
 
 .searchQuestionForm {
+    padding-bottom: 300px;
+}
 
+.FAQDiv {
+    background-color: lightgray;
+    text-align: center;
+    display: block;
+}
+
+.FAQHeader {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    padding-top: 40px;
+}
+
+.FAQQuestionType {
+    display: inline-block;
+    width: 25%;
+    text-align: start;
+    padding-left: 150px;
+}
+
+.questionTypeHeader {
+    font-weight: bold;
+    font-size: 28px;
+    padding-left: 40px;
+}
+
+.questionsList {
+    list-style: none;
+}
+
+.catalogButton {
+    background-color: #2C8DFF;
+    font-weight: 350;
+    color: white;
+    padding: 5px 25px;
+    margin-bottom: 50px;
 }
