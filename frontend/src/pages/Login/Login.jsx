@@ -1,25 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
+import { setUser } from "../../utils/fetchUser";
+import axios from "axios";
 
 import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const [barcode, setBarcode] = useState("");
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [error, setError] = useState(false);
+  const [loginInputClasses, setloginInputClasses] = useState(
+    "form-control form-control-lg"
+  );
 
   function handleCookie() {
-    localStorage.setItem("barcode", barcode);
-    // setCookie("barcode", barcode, {
-    // path: "/",
-    // });
-
-    navigate("/");
+    const form_data = new FormData();
+    setloginInputClasses("form-control form-control-lg");
+    form_data.append("barcode", barcode);
+    axios
+      .post(`http://10.1.11.249:8080/problem/get_user_id/`, form_data, {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then(({ data }) => {
+        if (data) {
+          setUser({ id: data.id, barcode: barcode });
+          navigate("/");
+        } else {
+          setloginInputClasses((prev) => (prev += " is-invalid"));
+          setError(true);
+          console.log("no user");
+        }
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
   }
 
-  useEffect(() => {
+  // useEffect(() => {
   //   let form_data = new FormData();
   //   form_data.append('barcode',5412);
   //   const requestOptions = {
@@ -29,32 +49,13 @@ const Login = () => {
   //     },
   //     body: form_data
   //   };
-
   //   fetch("http://10.1.11.249:8080/problem/get_user_id/", requestOptions)
   //     .then((response) => {
   //       console.log(JSON.parse(response));
   //     })
   //     .catch((err) => console.log(err));
   // }, []);
-
-  //AXios
-    let form_data = new FormData();
-    form_data.append('barcode',4564);
-
-  axios 
-  .post(`http://10.1.11.249:8080/problem/get_user_id/`, form_data, {
-    headers: {
-      'content-type':'application/json'
-    }
-  })
-  .then(res => {
-      console.log(res);
-  })
-  .catch(error => {
-        console.warn(error)
-  });
-  })
-  
+  // });
 
   return (
     <div>
@@ -63,17 +64,22 @@ const Login = () => {
         <div className="form-group login">
           <label
             className="col-form-label col-form-label-lg mt-4"
-            htmlFor="inputLarge"
+            htmlFor="loginInput"
           >
             Enter Barcode
           </label>
           <input
-            className="form-control form-control-lg"
+            className={loginInputClasses}
             type="text"
             placeholder="Barcode"
-            id="inputLarge"
+            id="loginInput"
             onChange={(e) => setBarcode(e.target.value)}
           />
+
+          {error && (
+            <div class="invalid-feedback">Incorrect barcode entered</div>
+          )}
+
           <button onClick={handleCookie} className="btn btn-primary login-btn">
             Set Cookie
           </button>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { fetchUser } from "../../../utils/fetchUser";
 import "./ProfileInfo.css";
 
 const ProfileInfo = () => {
@@ -9,59 +10,16 @@ const ProfileInfo = () => {
   const [barcode, setBarcode] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [cookies, setCookies] = useCookies("");
 
   useEffect(() => {
-    const randNum = Math.floor(Math.random() * 10) + 1;
-
-    // Have a connection problem with Windows 10
-    // Promise.all([
-    //   fetch("https://loremflickr.com/180/180/cat"),
-    //   fetch(`https://jsonplaceholder.typicode.com/users/${randNum}`),
-    // ])
-    //   .then((res) => {
-    //     const imgUrl = res[0].url;
-    //     const user = res[1].json();
-    //     setImgUrl(imgUrl);
-    //     return user;
-    //   })
-    //   .then(({ name, email }) => {
-    //     setName(name);
-    //     setEmail(email);
-    //     setBarcode(cookies.barcode);
-    //     setLoading(false);
-    //     console.log(name, email);
-    //   })
-    //   .catch((err) => {
-    //     setError(false);
-    //     console.log(err);
-    //   });
-
-    //Here is another API for getting user info
-    Promise.all([
-      fetch("https://loremflickr.com/180/180/cat"),
-      fetch("https://randomuser.me/api/?results=1"),
-    ])
-      .then((res) => {
-        const imgUrl = res[0].url;
-        const user = res[1].json();
-        setImgUrl(imgUrl);
-        return user;
-      })
+    fetch("https://loremflickr.com/180/180/cat")
+      .then((res) => res)
       .then((data) => {
-        const {
-          email,
-          name: { first, last },
-        } = data.results[0];
-
-        setName(`${first} ${last}`);
-        setEmail(email);
-        setBarcode(localStorage.getItem("barcode"));
+        setImgUrl(data.url);
+        const { id, barcode } = fetchUser();
+        setName(id);
+        setBarcode(barcode);
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(() => true);
-        console.log(err);
       });
   }, [error]);
 
@@ -82,10 +40,10 @@ const ProfileInfo = () => {
             <div>
               <h4>{name}</h4>
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">
+                {/* <li className="list-group-item">
                   <span className="term">Почта:</span>
                   <span>{email}</span>
-                </li>
+                </li> */}
                 <li className="list-group-item">
                   <span className="term">Barcode:</span>
                   <span>{barcode}</span>
