@@ -6,19 +6,19 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
-@Setter
+@Builder
+@Data
 @Entity
-@Table(name = "status")
+@Table
 public class Status {
+
     @Id
-    private Long statusId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String statusName;
-    @OneToMany(mappedBy = "problemId", fetch = FetchType.LAZY)
-    private List<Problem> problemList = new ArrayList<>();
 
 
 }

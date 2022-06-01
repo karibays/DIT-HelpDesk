@@ -9,17 +9,14 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
-@Table(name = "categories")
+@Table()
 public class Category {
     @Id
-    private Long categoryId;
-    private String categoryName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @OneToMany(mappedBy = "problemId", fetch = FetchType.LAZY)
-    private List<Problem> problemList = new ArrayList<>();
+    private String categoryName;
 
 
 }

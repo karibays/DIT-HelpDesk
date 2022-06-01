@@ -3,22 +3,25 @@ package com.springdemo.hellow.repository;
 import com.springdemo.hellow.model.Problem;
 import com.springdemo.hellow.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 
 @Repository
-public interface ProblemRepository extends JpaRepository<Problem, Long> {
+public interface ProblemRepository extends
+        JpaRepository<Problem, Long>,
+        FilterProblemRepository,
+        QuerydslPredicateExecutor<Problem> {
 
-//    @Query("SELECT title FROM Problem title")
     List<Problem> findProblemsByUser(User user);
 
+    @Query("select p " +
+            "from Problem p" +
+            " where p.user.id = :id")
+    List<Problem> findByUserId(Long id);
 
 
-    //@Query("SELECT pg FROM User bk join bk.problems pg WHERE bk.userId = :userId")
-    //List<Problem> findProblemsByUserId(@Param("userId") long userId);
-
-    //@Query(value = "Select p from problems p where user_id = ?1")
-    //List<Problem> getProblemsOfUser(long user_id);
 }
