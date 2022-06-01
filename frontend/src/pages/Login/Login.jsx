@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+
 import "./Login.css";
 
 const Login = () => {
@@ -18,18 +20,41 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ barcode: "5412" }),
-    };
-    fetch("http://10.1.11.249:8080/problem/get_user_id", requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  }, []);
+  //   let form_data = new FormData();
+  //   form_data.append('barcode',5412);
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "multipart/form-data",
+  //     },
+  //     body: form_data
+  //   };
+
+  //   fetch("http://10.1.11.249:8080/problem/get_user_id/", requestOptions)
+  //     .then((response) => {
+  //       console.log(JSON.parse(response));
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  //AXios
+    let form_data = new FormData();
+    form_data.append('barcode',4564);
+
+  axios 
+  .post(`http://10.1.11.249:8080/problem/get_user_id/`, form_data, {
+    headers: {
+      'content-type':'application/json'
+    }
+  })
+  .then(res => {
+      console.log(res);
+  })
+  .catch(error => {
+        console.warn(error)
+  });
+  })
+  
 
   return (
     <div>
