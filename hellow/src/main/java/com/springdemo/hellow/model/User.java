@@ -1,32 +1,42 @@
 package com.springdemo.hellow.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.springdemo.hellow.repository.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.springdemo.hellow.model.enums.Role;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Builder
 @Entity
-@JsonView
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    @JsonView(Views.UserIdResponseViews.class)
     private Long id;
-    private int barcode;
 
-    public User(Long id){
-        this.id = id;
-    }
+    private String username;
+
+    @Column(unique = true, nullable = false)
+    private Long barcode;
+
+    private String firstname;
+
+    private String lastname;
+
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Problem> problems = new ArrayList<>();
+
+
 }

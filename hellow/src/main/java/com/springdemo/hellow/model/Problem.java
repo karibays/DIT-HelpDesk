@@ -1,45 +1,50 @@
 package com.springdemo.hellow.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.springdemo.hellow.repository.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springdemo.hellow.requests.ProblemRequest;
 import lombok.*;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.time.Instant;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
-@JsonView
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@ToString
+@EqualsAndHashCode
+@Builder
 @Entity
-@Table(name = "problems")
-public class Problem implements Serializable {
+@Table()
+public class Problem extends AuditingEntity<Long> {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(Views.MyResponseViews.class)
-    private Long problemId;
-    @JsonView({Views.MyResponseViews.class})
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String title;
-    @JsonView(Views.MyResponseViews.class)
+
     private String description;
-    @JsonView({Views.MyResponseViews.class})
-    private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "status_id")
+    private Status status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Problem(ProblemRequest problemRequest) {
         this.title = problemRequest.getTitle();
         this.description = problemRequest.getDescription();
-        this.date = problemRequest.getDate();
         this.user = problemRequest.getUser();
     }
-
 }
