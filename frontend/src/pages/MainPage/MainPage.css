@@ -29,6 +29,8 @@
     padding-top: 20px;
     background-image: url("img/search_icon.png");
     background-color: #2C63A5;
+    border: none;
+    border-radius: 0 10px 10px 0;
 }
 
 .searchQuestionForm {
@@ -36,7 +38,7 @@
 }
 
 .FAQDiv {
-    background-color: lightgray;
+    background-color: white;
     text-align: center;
     display: block;
 }
@@ -62,6 +64,14 @@
 
 .questionsList {
     list-style: none;
+    
+}
+
+li a{
+    color: black;
+}
+a:hover {
+    color: #2C8DFF;
 }
 
 .catalogButton {
@@ -70,4 +80,6 @@
     color: white;
     padding: 5px 25px;
     margin-bottom: 50px;
+    border: none;
+    border-radius: 10px;
 }
