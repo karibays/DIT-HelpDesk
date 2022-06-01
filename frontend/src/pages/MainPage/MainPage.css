@@ -27,7 +27,8 @@
     width: 75px;
     margin-top: 18px;
     padding-top: 20px;
-    background: white url("img/search_icon.png") no-repeat right top;
+    background-image: url("img/search_icon.png");
+    background-color: #2C63A5;
 }
 
 .searchQuestionForm {
