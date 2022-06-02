@@ -19,7 +19,6 @@
 }
 
 .searchButton {
-<<<<<<< HEAD
   background-size: 73px;
   height: 75px;
   width: 75px;
@@ -27,17 +26,8 @@
   padding-top: 20px;
   background-image: url("img/search_icon.png");
   background-color: #2c63a5;
-=======
-    background-size: 73px;
-    height: 75px;
-    width: 75px;
-    margin-top: 18px;
-    padding-top: 20px;
-    background-image: url("img/search_icon.png");
-    background-color: #2C63A5;
-    border: none;
-    border-radius: 0 10px 10px 0;
->>>>>>> cafa4a4e3ec634f0f72964708ad2020eb0f86b65
+  border: none;
+  border-radius: 0 10px 10px 0;
 }
 
 .searchQuestionForm {
@@ -45,15 +35,9 @@
 }
 
 .FAQDiv {
-<<<<<<< HEAD
-  background-color: lightgray;
+  background-color: white;
   text-align: center;
   display: block;
-=======
-    background-color: white;
-    text-align: center;
-    display: block;
->>>>>>> cafa4a4e3ec634f0f72964708ad2020eb0f86b65
 }
 
 .FAQHeader {
@@ -75,8 +59,14 @@
 }
 
 .questionsList {
-<<<<<<< HEAD
   list-style: none;
+}
+
+li a {
+  color: black;
+}
+a:hover {
+  color: #2c8dff;
 }
 
 .catalogButton {
@@ -85,26 +75,6 @@
   color: white;
   padding: 5px 25px;
   margin-bottom: 50px;
+  border: none;
+  border-radius: 10px;
 }
-=======
-    list-style: none;
-    
-}
-
-li a{
-    color: black;
-}
-a:hover {
-    color: #2C8DFF;
-}
-
-.catalogButton {
-    background-color: #2C8DFF;
-    font-weight: 350;
-    color: white;
-    padding: 5px 25px;
-    margin-bottom: 50px;
-    border: none;
-    border-radius: 10px;
-}
->>>>>>> cafa4a4e3ec634f0f72964708ad2020eb0f86b65
