@@ -48,7 +48,7 @@ const Categories = () => {
                 </ul>
               </div>
               <div className="categories-questions col-md-9">
-                <h1>Moodle</h1>
+                <h1>MS Teams</h1>
                 <div
                   class="accordion accordion-flush"
                   id="accordionFlushExample"
