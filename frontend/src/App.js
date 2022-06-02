@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     const User = fetchUser();
-    if (!User) navigate("/login");
+    // if (!User) navigate("/login");
   }, []);
 
   return (

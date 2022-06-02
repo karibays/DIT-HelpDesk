@@ -23,7 +23,7 @@ const Login = () => {
     setloginInputClasses("form-control form-control-lg");
     form_data.append("barcode", barcode);
     axios
-      .post(`http://10.1.11.249:8080/problem/get_user_id/`, form_data, {
+      .post(`http://10.1.11.249:8080/problems/get_user_id/`, form_data, {
         headers: {
           "content-type": "application/json",
         },
@@ -41,6 +41,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.warn(error);
+        setloginInputClasses((prev) => (prev += " is-invalid"));
         setError(true);
       });
   }

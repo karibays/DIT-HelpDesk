@@ -5,7 +5,6 @@ import "./ProfileInfo.css";
 
 const ProfileInfo = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [barcode, setBarcode] = useState("");
   const [loading, setLoading] = useState(true);
