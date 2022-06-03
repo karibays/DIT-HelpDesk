@@ -42,6 +42,15 @@ public class ProblemRestController {
         return problemService.findByUserId(id);
     }
 
+    @GetMapping("category/{id}")
+    public List<ProblemReadDto> findByCategory(@PathVariable("id") Long id){
+        return problemService.findByCategoryId(id);
+    }
+    @GetMapping("status/{id}")
+    public List<ProblemReadDto> findByStatus(@PathVariable("id") Long id){
+        return problemService.findByStatusId(id);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ProblemReadDto create(@RequestBody ProblemCreateDto problem){

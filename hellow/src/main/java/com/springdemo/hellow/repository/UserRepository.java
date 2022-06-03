@@ -9,7 +9,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User getUserById(Long id);
-    User getUsersByBarcode(int barcode);
+    User getUsersByBarcode(Long barcode);
 
     Optional<User> findByUsername(String username);
+    Optional<User> findByBarcode(Long barcode);
 }
