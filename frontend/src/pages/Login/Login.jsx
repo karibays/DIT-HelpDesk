@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../../utils/fetchUser";
+import { fetchUser, setUser } from "../../utils/fetchUser";
 import axios from "axios";
 
 import "./Login.css";
@@ -19,31 +19,35 @@ const Login = () => {
   }
 
   function handleCookie() {
-    const form_data = new FormData();
-    setloginInputClasses("form-control form-control-lg");
-    form_data.append("barcode", barcode);
-    axios
-      .post(`http://10.1.11.249:8080/problems/get_user_id/`, form_data, {
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-      .then(({ data }) => {
-        console.log(data);
-        if (data) {
-          setUser({ id: data.id, barcode: barcode });
-          navigate("/");
-        } else {
-          setloginInputClasses((prev) => (prev += " is-invalid"));
-          setError(true);
-          console.log("no user");
-        }
-      })
-      .catch((error) => {
-        console.warn(error);
-        setloginInputClasses((prev) => (prev += " is-invalid"));
-        setError(true);
-      });
+    setUser({ id: barcode, barcode: "5412" });
+    console.log(fetchUser());
+    navigate("/");
+
+    // const form_data = new FormData();
+    // setloginInputClasses("form-control form-control-lg");
+    // form_data.append("barcode", barcode);
+    // axios
+    //   .post(`http://10.1.11.249:8080/problems/get_user_id/`, form_data, {
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //   })
+    //   .then(({ data }) => {
+    //     console.log(data);
+    //     if (data) {
+    //       setUser({ id: 2, barcode: "5412" });
+    //       navigate("/");
+    //     } else {
+    //       setloginInputClasses((prev) => (prev += " is-invalid"));
+    //       setError(true);
+    //       console.log("no user");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.warn(error);
+    //     setloginInputClasses((prev) => (prev += " is-invalid"));
+    //     setError(true);
+    //   });
   }
 
   // useEffect(() => {
