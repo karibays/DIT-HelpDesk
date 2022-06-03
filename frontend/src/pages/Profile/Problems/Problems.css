@@ -1,0 +1,34 @@
+.problems-block {
+  display: flex;
+}
+
+.problems-item {
+  min-height: 100px;
+  background-color: white;
+  padding: 10px 15px;
+  color: #000;
+  border-radius: 10px;
+}
+
+.problems-content {
+  width: 93%;
+  margin-right: 10px;
+}
+
+.problems-item:hover {
+  color: #000;
+}
+
+.problems-item h4 {
+  font-weight: bold;
+}
+
+.problems-btns {
+  margin: auto;
+}
+
+.problems-btns button {
+  width: 150px;
+  display: block;
+  margin-bottom: 5px;
+}
