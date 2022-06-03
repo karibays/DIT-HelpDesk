@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { fetchUser } from "../../../utils/fetchUser";
 import "./Problems.css";
@@ -5,6 +6,17 @@ import "./Problems.css";
 const ChatList = () => {
   const [problems, setProblems] = useState([]);
   const [hover, setHover] = useState(false);
+
+  function deleteProblem(id) {
+    console.log(id);
+    axios
+      .delete(`http://10.1.11.249:8080/problems/${id}`)
+      .then((res) => {
+        console.log(res.status);
+        window.location.reload();
+      })
+      .catch((err) => console.warn(err));
+  }
 
   useEffect(() => {
     const user = fetchUser();
@@ -50,7 +62,11 @@ const ChatList = () => {
                       </small>
                     </div>
                     <div className="problems-btns">
-                      <button type="button" class="btn btn-outline-danger">
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger"
+                        onClick={() => deleteProblem(id)}
+                      >
                         Удалить
                       </button>
                       <button type="button" class="btn btn-outline-warning">
