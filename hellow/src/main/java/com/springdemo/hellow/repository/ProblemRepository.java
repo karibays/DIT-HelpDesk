@@ -1,7 +1,6 @@
 package com.springdemo.hellow.repository;
 
 import com.springdemo.hellow.model.Problem;
-import com.springdemo.hellow.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
@@ -16,12 +15,20 @@ public interface ProblemRepository extends
         FilterProblemRepository,
         QuerydslPredicateExecutor<Problem> {
 
-    List<Problem> findProblemsByUser(User user);
+//    List<Problem> findProblemsByUser(User user);
 
     @Query("select p " +
             "from Problem p" +
             " where p.user.id = :id")
     List<Problem> findByUserId(Long id);
 
+    @Query("select p " +
+            "from Problem p" +
+            " where p.category.id = :id")
+    List<Problem> findByCategoryId(Long id);
+    @Query("select p " +
+            "from Problem p" +
+            " where p.status.id = :id")
+    List<Problem> findByStatusId(Long id);
 
 }

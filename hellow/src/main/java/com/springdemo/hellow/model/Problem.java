@@ -1,15 +1,9 @@
 package com.springdemo.hellow.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springdemo.hellow.requests.ProblemRequest;
 import lombok.*;
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.Instant;
 
 
 @Data

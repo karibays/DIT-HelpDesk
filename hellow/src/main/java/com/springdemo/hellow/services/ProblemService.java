@@ -1,9 +1,5 @@
 package com.springdemo.hellow.services;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
 import com.querydsl.core.types.Predicate;
 import com.springdemo.hellow.dto.filter.ProblemFilter;
 import com.springdemo.hellow.dto.problem.ProblemCreateDto;
@@ -13,18 +9,20 @@ import com.springdemo.hellow.mapper.problem.ProblemCreateMapper;
 import com.springdemo.hellow.mapper.problem.ProblemEditMapper;
 import com.springdemo.hellow.mapper.problem.ProblemReadMapper;
 import com.springdemo.hellow.model.Problem;
-import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.queryDsl.QPredicates;
+import com.springdemo.hellow.repository.ProblemRepository;
 import com.springdemo.hellow.repository.UserRepository;
 import com.springdemo.hellow.requests.ProblemRequest;
-import com.springdemo.hellow.repository.ProblemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import static com.springdemo.hellow.model.QProblem.problem;
 
@@ -65,7 +63,16 @@ public class ProblemService {
                 .map(problemReadMapper::map)
                 .toList();
     }
-
+    public List<ProblemReadDto> findByCategoryId(Long id) {
+        return problemRepository.findByCategoryId(id).stream()
+                .map(problemReadMapper::map)
+                .toList();
+    }
+    public List<ProblemReadDto> findByStatusId(Long id) {
+        return problemRepository.findByStatusId(id).stream()
+                .map(problemReadMapper::map)
+                .toList();
+    }
     @Transactional
     public ProblemReadDto create(ProblemCreateDto userDto) {
         return Optional.of(userDto)
@@ -104,10 +111,10 @@ public class ProblemService {
         return problemRepository.save(new Problem(request));
     }
 
-    public List<Problem> getProblemsByUserId(long id) {
-        User user = userRepository.getUserById(id);
-        return problemRepository.findProblemsByUser(user);
-    }
+//    public List<Problem> getProblemsByUserId(long id) {
+//        User user = userRepository.getUserById(id);
+//        return problemRepository.findProblemsByUser(user);
+//    }
 
     public void deleteProblem(Long postId) {
         problemRepository.deleteById(postId);
