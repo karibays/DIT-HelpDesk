@@ -1,13 +1,19 @@
+body {
+  font-family: Inter;
+}
+
 .topDiv {
-  background-color: #2c8dff;
+  background-color: #2C8DFF;
   text-align: center;
   display: block;
 }
 
 .mainHeader {
+  font-family: "Times New Roman", serif;
   color: white;
   font-weight: 550;
   padding-top: 150px;
+
 }
 
 .searchQuestion {
@@ -16,28 +22,19 @@
   padding-left: 40px;
   font-size: 25px;
   margin-top: 18px;
+
 }
 
 .searchButton {
-<<<<<<< HEAD
   background-size: 73px;
   height: 75px;
   width: 75px;
   margin-top: 18px;
   padding-top: 20px;
   background-image: url("img/search_icon.png");
-  background-color: #2c63a5;
-=======
-    background-size: 73px;
-    height: 75px;
-    width: 75px;
-    margin-top: 18px;
-    padding-top: 20px;
-    background-image: url("img/search_icon.png");
-    background-color: #2C63A5;
-    border: none;
-    border-radius: 0 10px 10px 0;
->>>>>>> cafa4a4e3ec634f0f72964708ad2020eb0f86b65
+  background-color: #2C63A5;
+  border: none;
+  border-radius: 0 10px 10px 0;
 }
 
 .searchQuestionForm {
@@ -45,66 +42,167 @@
 }
 
 .FAQDiv {
-<<<<<<< HEAD
-  background-color: lightgray;
+  background-color: white;
   text-align: center;
   display: block;
-=======
-    background-color: white;
-    text-align: center;
-    display: block;
->>>>>>> cafa4a4e3ec634f0f72964708ad2020eb0f86b65
 }
 
 .FAQHeader {
+  font-family: "Times New Roman", serif;
   font-weight: bold;
   padding-top: 40px;
 }
 
 .FAQQuestionType {
   display: inline-block;
-  width: 25%;
+  width: 22%;
   text-align: start;
-  padding-left: 150px;
+  padding-left: 50px;
 }
 
 .questionTypeHeader {
+
   font-weight: bold;
   font-size: 28px;
   padding-left: 40px;
 }
 
 .questionsList {
-<<<<<<< HEAD
+  text-align: left;
+
   list-style: none;
 }
 
+li a{
+  color: black;
+}
+a:hover {
+  color: #2C8DFF;
+}
+
 .catalogButton {
-  background-color: #2c8dff;
+  background-color: #2C8DFF;
   font-weight: 350;
   color: white;
   padding: 5px 25px;
   margin-bottom: 50px;
+  border: none;
+  border-radius: 10px;
 }
-=======
-    list-style: none;
-    
+.FindQ {
+  text-align: center;
+  display: block;
+}
+.FindQType {
+  margin-left: 121px;
+  font-weight: bold;
+  padding-top: 40px;
+}
+.FindPType{
+  margin-left: 121px;
+  color: grey;
+}
+.FindHSType{
+  margin-left: 121px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.block {
+  width:1200px;
+  height:65px;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.blockInfo2 {
+  color: grey;
+  padding-left: 10px;
+  padding-right: 40px;
+}
+.blockInfo {
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 40px;
+}
+.blockInfo3 {
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 10px;
+  vertical-align: middle;
 }
 
-li a{
-    color: black;
+
+
+
+/*ne mozhete rewit' vawu problem */
+.head{
+  color:#ffffff;
+  padding-top:40px;
 }
-a:hover {
-    color: #2C8DFF;
+.header{
+  background-color: #2C8DFF;
+}
+.header2{
+  color:#d9d9d9;
 }
 
-.catalogButton {
-    background-color: #2C8DFF;
-    font-weight: 350;
-    color: white;
-    padding: 5px 25px;
-    margin-bottom: 50px;
-    border: none;
-    border-radius: 10px;
+.UserChoice{
+  height:45px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border:0;
+  font-size: 16px;
+  width: 960px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
->>>>>>> cafa4a4e3ec634f0f72964708ad2020eb0f86b65
+.header3{
+  margin-left: 242px;
+  font-weight: bold;
+  padding-top: 30px;
+  margin-top: 40px;
+  color: white;
+}
+.header4{
+  margin-left: 242px;
+  font-weight: bold;
+  padding-top: 0px;
+  margin-top: -5px;
+  color: white;
+}
+.form-control{
+  height:45px;
+  margin: 0px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border:0;
+  font-size: 16px;
+  width: 960px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.files{
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+
+}
+.catalogButton2 {
+  background-color: white;
+  font-weight: 350;
+  color: #2C8DFF;
+  padding: 5px 25px;
+  margin-bottom: 50px;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
