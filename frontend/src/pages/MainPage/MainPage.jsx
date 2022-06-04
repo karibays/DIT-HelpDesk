@@ -149,13 +149,15 @@ const MainPage = () => {
         </div>
       </div>
       <div>
-        <div>
+        <div className="container">
+
           <h3 className="FindQType">Не нашли ответ на свой вопрос? </h3>
           <p className="FindPType">
             Задайте свой вопрос на нашем форуме и другие пользователи
             постораются вам помочь!
           </p>
           <h4 className="FindHSType">Последние заданные вопросы</h4>
+
           <div className="block">
             <h6 className="blockInfo">Как запустить BIOS на ПК от Lenovo?</h6>
             <small className="blockInfo2">Иван Иванович</small>
@@ -185,49 +187,53 @@ const MainPage = () => {
             Перейти на форум
           </button>
         </div>
-      </div>
 
+      </div>
+     <div className="Aheader">
       <div className="header">
+        <div className="TOPheader">
         <h3 className="head" align="center">
           Не можете решить проблему?
         </h3>
         <p className="header2" align="center">
           Заполните анкету и с вами свяжутся наши агенты!{" "}
         </p>
-        <p className="header3">Выберите категорию проблемы</p>
-        <select
-          name="user_profile_color_2"
-          className="UserChoice"
-          required="required"
-        >
-          <option value="">Выберите из списка</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <p className="header4">Что вы хотели сделать?</p>
-        <textarea className="form-control" placeholder="Введите текст...">
-          {" "}
-        </textarea>
-        <p className="header4">Что привело к проблеме?</p>
-        <textarea className="form-control" placeholder="Введите текст...">
-          {" "}
-        </textarea>
-        <p className="header4">Что вы испробовали для решения проблемы?</p>
-        <textarea className="form-control" placeholder="Введите текст...">
-          {" "}
-        </textarea>
-        <p className="header4">Прикрепите полезные снимки вашей проблемы</p>
-        <div className="form-group">
-          <input className="form-control" type="file" id="formFile"></input>
+        </div>
+        <div className=" container">
+          <div className="header4">
+            <label htmlFor="exampleSelect1" className="form-label mt-4">Выберите категорию проблемы</label>
+            <select className="form-select" id="exampleSelect1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label className="header4">Что вы хотели сделать?</label>
+            <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
+          </div>
+          <div className="form-group">
+            <label className="header4">Что привело к проблеме?</label>
+            <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
+          </div>
+          <div className="form-group">
+            <label className="header4">Что вы испробовали для решения проблемы?</label>
+            <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
+          </div>
+          <div className="form-group">
+            <label className="header4">Прикрепите полезные снимки вашей пробелмы</label>
+            <input className="form-control" type="file" id="formFile" />
+          </div>
+
         </div>
         <button type="submit" className="catalogButton2">
           Отправить анкету
         </button>
       </div>
+
+     </div>
     </div>
   );
 };
