@@ -11,6 +11,7 @@ import java.time.Instant;
 @Value
 public class AdminReadDto {
 
+    Long id;
     Long barcode;
     String firstname;
     String lastname;
