@@ -17,7 +17,7 @@ public interface UserRepository extends
         FilterProblemRepository,
         QuerydslPredicateExecutor<User> {
     User getUserById(Long id);
-    User getUsersByBarcode(Long barcode);
+    Optional<User> getUsersByBarcode(Long barcode);
 
     Optional<User> findByUsername(String username);
     Optional<User> findByBarcode(Long barcode);

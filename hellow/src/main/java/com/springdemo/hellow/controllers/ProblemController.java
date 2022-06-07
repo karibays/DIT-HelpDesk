@@ -1,6 +1,7 @@
 package com.springdemo.hellow.controllers;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.springdemo.hellow.dto.barcode.UserIdDto;
 import com.springdemo.hellow.model.SocketMessage;
 import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.requests.UserRequest;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
@@ -25,7 +27,7 @@ public class ProblemController {
     private final MessageService messageService;
 
     @PostMapping(value = "/get_user_id")
-    public User get_user_id(UserRequest userRequest) {
+    public Optional<UserIdDto> get_user_id(UserRequest userRequest) {
         return userService.get_user_id(userRequest.getBarcode());
     }
 

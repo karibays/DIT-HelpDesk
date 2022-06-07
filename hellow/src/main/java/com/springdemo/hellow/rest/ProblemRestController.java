@@ -53,8 +53,8 @@ public class ProblemRestController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ProblemReadDto create(@RequestBody ProblemCreateDto problem){
-        return  problemService.create(problem);
+    public void create(@RequestBody ProblemCreateDto problem){
+          problemService.create(problem);
     }
 
     @PutMapping("/{id}")

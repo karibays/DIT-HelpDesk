@@ -26,7 +26,7 @@ public class Problem extends AuditingEntity<Long> {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id")
+    @JoinColumn(name = "status_id", columnDefinition = "1")
     private Status status;
 
     @ManyToOne(fetch = FetchType.LAZY)
