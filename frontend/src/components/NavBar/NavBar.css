@@ -1,3 +1,7 @@
+.navbar-nav {
+  text-align: center;
+}
+
 .nav-link-blue {
   color: black;
   transition: 0.2s ease-in-out;
@@ -28,14 +32,12 @@
   border-color: black;
 }
 
-.nav-link-blue:hover,
-.navbar-brand-white:hover {
-  color: #252525;
+.nav-link-blue:hover {
+  color: #2c8dff;
   transition: 0.2s ease-in-out;
 }
 
-.nav-link-white:hover,
-.navbar-brand-black:hover {
+.nav-link-white:hover {
   color: #252525;
   transition: 0.2s ease-in-out;
 }
@@ -50,7 +52,7 @@
 }
 
 .navbar-toggler {
-  margin: auto 0;  
+  margin: auto 0;
 }
 
 .navbar-toggler-black {
@@ -74,13 +76,15 @@
   margin-top: 3px;
 }
 
-.logo-light h3, .logo-blue h3 {
+.logo-light h3,
+.logo-blue h3 {
   font-weight: bold;
   font-size: 26px;
   margin: 0;
 }
 
-.logo-light:hover, .logo-blue:hover {
+.logo-light:hover,
+.logo-blue:hover {
   text-decoration: none;
 }
 
