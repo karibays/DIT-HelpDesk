@@ -61,7 +61,7 @@ const NavBar = ({ lightMode }) => {
                   Заполнить анкету
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mr-3">
                 <Link to="/profile" className={textColorClasses}>
                   Личный кабинет
                 </Link>
