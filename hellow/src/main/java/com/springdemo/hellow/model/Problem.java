@@ -1,16 +1,17 @@
 package com.springdemo.hellow.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springdemo.hellow.requests.ProblemRequest;
 import lombok.*;
 
 import javax.persistence.*;
 
-
+@JsonIgnoreProperties(
+        {"hibernateLazyInitializer", "handler"}
+)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 @Builder
 @Entity
 @Table()

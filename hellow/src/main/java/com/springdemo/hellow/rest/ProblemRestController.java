@@ -6,10 +6,7 @@ import com.springdemo.hellow.dto.filter.ProblemFilter;
 import com.springdemo.hellow.dto.problem.ProblemCreateDto;
 import com.springdemo.hellow.dto.problem.ProblemEditDto;
 import com.springdemo.hellow.dto.problem.ProblemReadDto;
-import com.springdemo.hellow.dto.useradmin.AdminCreateDto;
-import com.springdemo.hellow.dto.useradmin.AdminReadDto;
 import com.springdemo.hellow.services.ProblemService;
-import com.springdemo.hellow.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +24,6 @@ import java.util.List;
 public class ProblemRestController {
 
     private final ProblemService problemService;
-    private final UserService userService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public PageResponse<ProblemReadDto> findAll(ProblemFilter filter, Pageable pageable){
