@@ -18,9 +18,6 @@ public class ProblemRequest {
     private Long user_id;
     private Date date;
 
-    @Autowired
-    private UserRepository userRepository;
-
     public User getUser(){
         //User user = new User(this.user_id);
         return null;

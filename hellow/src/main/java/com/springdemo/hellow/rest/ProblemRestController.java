@@ -72,9 +72,5 @@ public class ProblemRestController {
         }
     }
 
-//    @GetMapping("/{problem_id}")
-//    public ProblemMessageDto findByProblemId(@PathVariable("problem_id") Long problem_id){
-//        return problemService.findById(problem_id)
-//    }
 
 }
