@@ -17,4 +17,5 @@ public class ProblemReadDto {
     StatusReadDto status;
     CategoryReadDto category;
     ProblemUserReadDto user;
+    Long a = 5L;
 }
