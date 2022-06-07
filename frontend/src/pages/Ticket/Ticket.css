@@ -1,17 +1,12 @@
-
-
-h5:nth-child(1) {
-    margin-top: 100px;
+.ticket-container h2 {
+  margin-top: 20px;
 }
-h5{
-    font-size: 18px;
-    margin-top: 20px;
-}
+
 .form {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
 }
 button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
