@@ -1,6 +1,8 @@
 package com.springdemo.hellow.rest;
 
 
+import com.springdemo.hellow.dto.barcode.BarcodeUserDto;
+import com.springdemo.hellow.dto.problem.ProblemReadDto;
 import com.springdemo.hellow.dto.useradmin.AdminCreateDto;
 import com.springdemo.hellow.dto.useradmin.AdminEditDto;
 import com.springdemo.hellow.dto.useradmin.AdminReadDto;
@@ -20,6 +22,12 @@ import java.util.List;
 public class UserRestController {
 
     private final UserService userService;
+
+    @GetMapping("barcode/{barcode}")
+    public BarcodeUserDto findByBarcode(@PathVariable("barcode") Long barcode){
+        return userService.findByBarcode(barcode)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
 
     @PostMapping("createAdmin")
     public AdminReadDto createAdmin(@RequestBody AdminCreateDto adminCreateDto){

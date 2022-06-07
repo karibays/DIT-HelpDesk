@@ -1,6 +1,7 @@
 package com.springdemo.hellow.services;
 
 import com.querydsl.core.types.Predicate;
+import com.springdemo.hellow.dto.barcode.BarcodeUserDto;
 import com.springdemo.hellow.dto.filter.ProblemFilter;
 import com.springdemo.hellow.dto.problem.ProblemCreateDto;
 import com.springdemo.hellow.dto.problem.ProblemEditDto;
@@ -8,6 +9,7 @@ import com.springdemo.hellow.dto.problem.ProblemReadDto;
 import com.springdemo.hellow.dto.useradmin.AdminCreateDto;
 import com.springdemo.hellow.dto.useradmin.AdminEditDto;
 import com.springdemo.hellow.dto.useradmin.AdminReadDto;
+import com.springdemo.hellow.mapper.BarcodeUserMapper;
 import com.springdemo.hellow.mapper.admin.AdminCreateMapper;
 import com.springdemo.hellow.mapper.admin.AdminEditMapper;
 import com.springdemo.hellow.mapper.admin.AdminReadMapper;
@@ -38,6 +40,7 @@ public class UserService implements UserDetailsService {
     private final AdminCreateMapper adminCreateMapper;
     private final AdminReadMapper adminReadMapper;
     private final AdminEditMapper adminEditMapper;
+    private final BarcodeUserMapper barcodeUserMapper;
 
     public User get_user_id(long barcode){
         return userRepository.getUsersByBarcode(barcode);
@@ -84,6 +87,11 @@ public class UserService implements UserDetailsService {
         return userRepository.findRoleADMIN().stream()
                 .map(adminReadMapper::map)
                 .toList();
+    }
+
+    public Optional<BarcodeUserDto> findByBarcode(Long barcode) {
+        return userRepository.findByBarcode(barcode)
+                .map(barcodeUserMapper::map);
     }
 
 

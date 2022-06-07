@@ -26,6 +26,7 @@ public class AdminReadMapper implements Mapper<User, AdminReadDto> {
 
         return new AdminReadDto(
                 object.getId(),
+                object.getBarcode(),
                 object.getFirstname(),
                 object.getLastname(),
                 object.getUsername(),
