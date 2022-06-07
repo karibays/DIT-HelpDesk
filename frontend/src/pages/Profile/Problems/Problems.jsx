@@ -19,14 +19,23 @@ const ChatList = () => {
 
   useEffect(() => {
     const user = fetchUser();
-    // console.log(user);
-    fetch(`http://10.1.11.249:8080/problems/user/${user.id}`)
+   
+   
+    
+
+     
+    axios.get(`http://10.1.11.249:8080/problems/user/${user.id}`)
       .then((res) => {
-        return res.json();
+        setProblems(res.data)
+
       })
-      .then((data) => {
-        setProblems(data);
+      .catch(function (error) {
+        console.log("Error while fetching problems: " + error.message);
       });
+    
+     
+    
+    
   }, []);
 
   return (
