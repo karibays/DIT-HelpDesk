@@ -1,8 +1,5 @@
 package com.springdemo.hellow.repository;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.springdemo.hellow.model.SocketMessage;
-import com.springdemo.hellow.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

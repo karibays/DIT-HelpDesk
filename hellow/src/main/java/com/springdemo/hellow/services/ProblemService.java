@@ -1,7 +1,5 @@
 package com.springdemo.hellow.services;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.querydsl.core.types.Predicate;
 import com.springdemo.hellow.dto.filter.ProblemFilter;
 import com.springdemo.hellow.dto.problem.ProblemCreateDto;
@@ -11,8 +9,6 @@ import com.springdemo.hellow.mapper.problem.ProblemCreateMapper;
 import com.springdemo.hellow.mapper.problem.ProblemEditMapper;
 import com.springdemo.hellow.mapper.problem.ProblemReadMapper;
 import com.springdemo.hellow.model.Problem;
-import com.springdemo.hellow.model.SocketMessage;
-import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.queryDsl.QPredicates;
 import com.springdemo.hellow.repository.MessageRepository;
 import com.springdemo.hellow.repository.ProblemRepository;
