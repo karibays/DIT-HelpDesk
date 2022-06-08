@@ -10,27 +10,32 @@ const Categories = () => {
   const [problems, setProblems] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const [title, setTitle] = useState("");
-  const [problemsFound, setProblemsFound] = useState(true);
+  // const [problemsFound, setProblemsFound] = useState(true);
 
   const handleSearch = (e) => {
-    console.log(e.target.value);
+    if (e.target.value) {
+      setTitle(e.target.value);
+      axios
+        .get(`http://10.1.11.249:8080/problems?title=${e.target.value}`)
+        .then(({ data: { content } }) => {
+          setProblems(content);
+        })
+        .catch((err) => console.log(err));
+    } else handleSelect(1);
   };
 
   const handleSelect = (selectedCategory) => {
     axios
       .get(`http://10.1.11.249:8080/problems/category/${selectedCategory}`)
       .then(({ data }) => {
-        if (data.length) {
-          setProblems(data);
-          setTitle(data[0].category.categoryName);
-          setProblemsFound(true);
-        } else {
-          setProblems([]);
-          setTitle("");
-          setProblemsFound(false);
-        }
+        setProblems(data);
       })
       .catch((err) => console.warn(err));
+
+    axios
+      .get("http://10.1.11.249:8080/problems/categories")
+      .then(({ data }) => setTitle(data[selectedCategory - 1].categoryName))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -64,16 +69,10 @@ const Categories = () => {
                   handleSelect={handleSelect}
                 />
               </div>
-              {problemsFound ? (
-                <QuestionsList questionsArray={problems} title={title} />
-              ) : (
-                <div className="col-md-9">
-                  <Error
-                    message="К сожалению, для данной категории не были подобраны часто задаваемые вопросы..."
-                    subMessage="Ближайшее время они будут добавлены!"
-                  />
-                </div>
-              )}
+              <div className="col-md-9">
+                <h1 className="category-title">{title}</h1>
+                <QuestionsList questionsArray={problems} />
+              </div>
             </div>
           </div>
         </div>
