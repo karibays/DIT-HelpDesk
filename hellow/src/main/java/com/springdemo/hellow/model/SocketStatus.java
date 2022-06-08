@@ -1,7 +1,7 @@
-//package com.springdemo.hellow.model;
-//
-//public enum SocketStatus {
-//    JOIN,
-//    MESSAGE,
-//    LEAVE
-//}
+package com.springdemo.hellow.model;
+
+public enum SocketStatus {
+    JOIN,
+    MESSAGE,
+    LEAVE
+}

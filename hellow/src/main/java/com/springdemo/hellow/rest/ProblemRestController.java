@@ -2,11 +2,15 @@ package com.springdemo.hellow.rest;
 
 
 import com.springdemo.hellow.dto.PageResponse;
+import com.springdemo.hellow.dto.category.CategoryReadDto;
 import com.springdemo.hellow.dto.filter.ProblemFilter;
 import com.springdemo.hellow.dto.problem.ProblemCreateDto;
 import com.springdemo.hellow.dto.problem.ProblemEditDto;
 import com.springdemo.hellow.dto.problem.ProblemReadDto;
+import com.springdemo.hellow.dto.status.StatusReadDto;
+import com.springdemo.hellow.services.CategoryService;
 import com.springdemo.hellow.services.ProblemService;
+import com.springdemo.hellow.services.StatusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +28,8 @@ import java.util.List;
 public class ProblemRestController {
 
     private final ProblemService problemService;
+    private final CategoryService categoryService;
+    private final StatusService statusService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public PageResponse<ProblemReadDto> findAll(ProblemFilter filter, Pageable pageable){
@@ -45,6 +51,14 @@ public class ProblemRestController {
     @GetMapping("category/{id}")
     public List<ProblemReadDto> findByCategory(@PathVariable("id") Long id){
         return problemService.findByCategoryId(id);
+    }
+    @GetMapping("categories")
+    public List<CategoryReadDto> findallCategories(){
+        return categoryService.findAll();
+    }
+    @GetMapping("statuses")
+    public List<StatusReadDto> statusList(){
+        return statusService.findAll();
     }
     @GetMapping("status/{id}")
     public List<ProblemReadDto> findByStatus(@PathVariable("id") Long id){

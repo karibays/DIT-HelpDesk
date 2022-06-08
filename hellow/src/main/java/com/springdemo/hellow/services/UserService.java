@@ -1,12 +1,7 @@
 package com.springdemo.hellow.services;
 
-import com.querydsl.core.types.Predicate;
 import com.springdemo.hellow.dto.barcode.BarcodeUserDto;
 import com.springdemo.hellow.dto.barcode.UserIdDto;
-import com.springdemo.hellow.dto.filter.ProblemFilter;
-import com.springdemo.hellow.dto.problem.ProblemCreateDto;
-import com.springdemo.hellow.dto.problem.ProblemEditDto;
-import com.springdemo.hellow.dto.problem.ProblemReadDto;
 import com.springdemo.hellow.dto.useradmin.AdminCreateDto;
 import com.springdemo.hellow.dto.useradmin.AdminEditDto;
 import com.springdemo.hellow.dto.useradmin.AdminReadDto;
@@ -15,12 +10,8 @@ import com.springdemo.hellow.mapper.UserIdMapper;
 import com.springdemo.hellow.mapper.admin.AdminCreateMapper;
 import com.springdemo.hellow.mapper.admin.AdminEditMapper;
 import com.springdemo.hellow.mapper.admin.AdminReadMapper;
-import com.springdemo.hellow.model.User;
-import com.springdemo.hellow.queryDsl.QPredicates;
 import com.springdemo.hellow.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
-import static com.springdemo.hellow.model.QProblem.problem;
 
 @Service
 @RequiredArgsConstructor
