@@ -11,7 +11,8 @@ public class UserIdMapper implements Mapper<User, UserIdDto> {
     @Override
     public UserIdDto map(User object) {
         return new UserIdDto(
-                object.getId()
+                object.getId(),
+                object.getRole()
         );
     }
 }
