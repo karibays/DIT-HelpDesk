@@ -7,6 +7,7 @@ import com.springdemo.hellow.model.Problem;
 import com.springdemo.hellow.model.Status;
 import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.repository.CategoryRepository;
+import com.springdemo.hellow.repository.StatusRepository;
 import com.springdemo.hellow.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ public class ProblemCreateMapper implements Mapper<ProblemCreateDto, Problem> {
 
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
+    private final StatusRepository statusRepository;
 
     @Override
     public Problem map(ProblemCreateDto object) {
@@ -49,6 +51,7 @@ public class ProblemCreateMapper implements Mapper<ProblemCreateDto, Problem> {
         problem.setDescription(object.getDescription());
         problem.setUser(getUser(object.getUserId()));
         problem.setCategory(getCategory(object.getCategoryId()));
+        problem.setStatus(getStatus(object.getStatusId()));
     }
 
     public User getUser(Long userId) {
@@ -60,6 +63,12 @@ public class ProblemCreateMapper implements Mapper<ProblemCreateDto, Problem> {
     public Category getCategory(Long categoryId) {
         return Optional.ofNullable(categoryId)
                 .flatMap(categoryRepository::findById)
+                .orElse(null);
+    }
+
+    public Status getStatus(Long statusId) {
+        return Optional.ofNullable(statusId)
+                .flatMap(statusRepository::findById)
                 .orElse(null);
     }
 }
