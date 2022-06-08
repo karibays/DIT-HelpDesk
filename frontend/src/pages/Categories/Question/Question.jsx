@@ -1,11 +1,12 @@
 import React from "react";
 import "./Question.css";
 
-const Questions = ({ problem: { title, description } }) => {
+const Questions = ({ problem: { title, description, category } }) => {
   return (
     <div className="question-block">
       <div className="question-content">
-        <h4>{title}</h4>
+        <small className="text-muted">{category?.categoryName}</small>
+        <h2>{title}</h2>
         <p>{description}</p>
       </div>
     </div>

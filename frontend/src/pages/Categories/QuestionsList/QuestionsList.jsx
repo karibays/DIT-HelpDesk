@@ -2,10 +2,12 @@ import React from "react";
 import Question from "../Question";
 import "./QuestionsList.css";
 
-const QuestionsList = ({ questionsArray, title }) => {
+const QuestionsList = ({ questionsArray }) => {
   return (
-    <div className="col-md-9">
-      <h1>{title}</h1>
+    <div>
+      <h4 className="text-muted fw-normal">
+        Найдено {questionsArray.length} вопросов
+      </h4>
       <div className="questions-list">
         {questionsArray.map((question) => {
           return <Question problem={question} key={question.id} />;
