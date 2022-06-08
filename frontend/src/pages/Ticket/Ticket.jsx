@@ -22,7 +22,7 @@ const Ticket = () => {
 
     form_data = {
       title: tried,
-      description,
+      description: description,
       userId: id,
       categoryId: selectedCategory,
     };
