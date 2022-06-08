@@ -19,54 +19,36 @@ const Login = () => {
   }
 
   function handleCookie() {
-    setUser({ id: barcode, barcode: "5412" });
-    console.log(fetchUser());
-    navigate("/");
-
-    // const form_data = new FormData();
-    // setloginInputClasses("form-control form-control-lg");
-    // form_data.append("barcode", barcode);
-    // axios
-    //   .post(`http://10.1.11.249:8080/problems/get_user_id/`, form_data, {
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //   })
-    //   .then(({ data }) => {
-    //     console.log(data);
-    //     if (data) {
-    //       setUser({ id: 2, barcode: "5412" });
-    //       navigate("/");
-    //     } else {
-    //       setloginInputClasses((prev) => (prev += " is-invalid"));
-    //       setError(true);
-    //       console.log("no user");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.warn(error);
-    //     setloginInputClasses((prev) => (prev += " is-invalid"));
-    //     setError(true);
-    //   });
+    const form_data = new FormData();
+    setloginInputClasses("form-control form-control-lg");
+    form_data.append("barcode", barcode);
+    axios
+      .post(`http://10.1.11.249:8080/problems/get_user_id/`, form_data, {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then(({ data }) => {
+        console.log(data);
+        if (data) {
+          setUser(data);
+          navigate("/");
+        } else {
+          setloginInputClasses((prev) => (prev += " is-invalid"));
+          setError(true);
+          console.log("no user");
+        }
+      })
+      .catch((error) => {
+        console.warn(error);
+        setloginInputClasses((prev) => (prev += " is-invalid"));
+        setError(true);
+      });
   }
 
-  // useEffect(() => {
-  //   let form_data = new FormData();
-  //   form_data.append('barcode',5412);
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "multipart/form-data",
-  //     },
-  //     body: form_data
-  //   };
-  //   fetch("http://10.1.11.249:8080/problem/get_user_id/", requestOptions)
-  //     .then((response) => {
-  //       console.log(JSON.parse(response));
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-  // });
+  useEffect(() => {
+    // if (fetchUser() !== null || fetchUser() !== undefined) navigate("/");
+  }, []);
 
   return (
     <div>
