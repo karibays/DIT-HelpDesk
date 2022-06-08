@@ -5,6 +5,8 @@ import com.springdemo.hellow.requests.ProblemRequest;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonIgnoreProperties(
         {"hibernateLazyInitializer", "handler"}
@@ -36,6 +38,9 @@ public class Problem extends AuditingEntity<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "problem")
+    private List<Comment> comments = new ArrayList<>();
 
     public Problem(ProblemRequest problemRequest) {
         this.title = problemRequest.getTitle();
