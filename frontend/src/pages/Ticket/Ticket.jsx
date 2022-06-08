@@ -6,18 +6,22 @@ import { fetchUser } from "../../utils/fetchUser";
 
 const Ticket = () => {
   const { id } = fetchUser();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(1);
+  const [tried, setTry] = useState("");
+  const [brought, setBrought] = useState("");
+  const [solve, setSolve] = useState("");
+
   const problemSubmit = async (e) => {
     let form_data = new FormData();
-    // form_data.append("title", title);
-    // form_data.append("description", description);
-    // form_data.append("userId", id);
-    // form_data.append("categoryId", 1);
+    const description = `
+    ${tried} <br>
+    ${brought} <br>
+    ${solve}
+    `;
+    console.log(description);
 
     form_data = {
-      title,
+      title: tried,
       description,
       userId: id,
       categoryId: selectedCategory,
@@ -37,10 +41,6 @@ const Ticket = () => {
       });
   };
 
-  const handleSelect = (event) => {
-    setSelectedCategory(event.target.value);
-    console.log(event.target.value);
-  };
   return (
     <div>
       <NavBar lightMode={true} />
@@ -51,34 +51,14 @@ const Ticket = () => {
           нашим специалистам!
         </h5>
         <form onSubmit={problemSubmit}>
-          {/* <h5>Тема</h5>
-          <input
-            className="form"
-            type="text"
-            name="title"
-            required
-            placeholder="Тема проблемы"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-
-          <h5>Опишите проблему</h5>
-          <textarea
-            className="form"
-            required
-            placeholder="Описание проблемы"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          /> */}
-
-          <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4">
+          <div className="form-group">
+            <label htmlFor="exampleSelect1" className="form-label mt-4">
               Выберите категорию
             </label>
             <select
-              class="form-select"
+              className="form-select"
               id="exampleSelect1"
-              onChange={handleSelect}
+              onChange={(e) => setSelectedCategory(e.target.value)}
             >
               <option>1</option>
               <option>2</option>
@@ -88,37 +68,40 @@ const Ticket = () => {
             </select>
           </div>
           <div className="form-group">
-            <label for="exampleTextarea" className="form-label">
+            <label htmlFor="exampleTextarea" className="form-label">
               Что вы хотели сделать?
             </label>
             <textarea
               className="form-control"
               id="exampleTextarea"
               rows="3"
+              onChange={(e) => setTry(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">
-            <label for="exampleTextarea" className="form-label">
+            <label htmlFor="exampleTextarea" className="form-label">
               Что привело к проблеме?
             </label>
             <textarea
               className="form-control"
               id="exampleTextarea"
               rows="3"
+              onChange={(e) => setBrought(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">
-            <label for="exampleTextarea" className="form-label">
+            <label htmlFor="exampleTextarea" className="form-label">
               Что вы испробовали для решения проблемы?
             </label>
             <textarea
               className="form-control"
               id="exampleTextarea"
               rows="3"
+              onChange={(e) => setSolve(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">
-            <label for="exampleTextarea" className="form-label">
+            <label htmlFor="exampleTextarea" className="form-label">
               Прикрепите полезные снимки вашей пробелмы
             </label>
             <input className="form-control" type="file" id="formFile" />

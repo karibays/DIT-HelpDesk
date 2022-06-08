@@ -1,8 +1,46 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import QuestionsList from "./QuestionsList";
+import CategoriesList from "./CategoriesList";
 import NavBar from "../../components/NavBar";
+import Error from "../../components/Error";
 import "./Categories.css";
 
 const Categories = () => {
+  const [problems, setProblems] = useState([]);
+  const [categoriesList, setCategoriesList] = useState([]);
+  const [title, setTitle] = useState("");
+  const [problemsFound, setProblemsFound] = useState(true);
+
+  const handleSearch = (e) => {
+    console.log(e.target.value);
+  };
+
+  const handleSelect = (selectedCategory) => {
+    axios
+      .get(`http://10.1.11.249:8080/problems/category/${selectedCategory}`)
+      .then(({ data }) => {
+        if (data.length) {
+          setProblems(data);
+          setTitle(data[0].category.categoryName);
+          setProblemsFound(true);
+        } else {
+          setProblems([]);
+          setTitle("");
+          setProblemsFound(false);
+        }
+      })
+      .catch((err) => console.warn(err));
+  };
+
+  useEffect(() => {
+    handleSelect(1);
+    axios
+      .get("http://10.1.11.249:8080/problems/categories")
+      .then(({ data }) => setCategoriesList(data))
+      .catch((err) => console.warn(err));
+  }, []);
+
   return (
     <div>
       <NavBar lightMode={true} />
@@ -14,133 +52,28 @@ const Categories = () => {
               type="text"
               placeholder="Поиск проблемы"
               id="inputLarge"
+              onChange={handleSearch}
             />
           </div>
           <div className="categories-content">
             <div className="row">
               <div className="categories-navbar col-md-3">
                 <h2>База Знаний</h2>
-                <ul className="categories-list">
-                  <li className="categories-item">
-                    <a href="#"> Moodle </a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> MS Teams</a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> Platonus </a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> Компьютер </a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> Интернет </a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> Программное обеспечение </a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> Проектор </a>
-                  </li>
-                  <li className="categories-item">
-                    <a href="#"> Другое </a>
-                  </li>
-                </ul>
+                <CategoriesList
+                  categoriesArray={categoriesList}
+                  handleSelect={handleSelect}
+                />
               </div>
-              <div className="categories-questions col-md-9">
-                <h1>MS Teams</h1>
-                <div
-                  class="accordion accordion-flush"
-                  id="accordionFlushExample"
-                >
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne"
-                        aria-expanded="false"
-                        aria-controls="flush-collapseOne"
-                      >
-                        Accordion Item #1
-                      </button>
-                    </h2>
-                    <div
-                      id="flush-collapseOne"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="flush-headingOne"
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div class="accordion-body">
-                        Placeholder content for this accordion, which is
-                        intended to demonstrate the{" "}
-                        <code>.accordion-flush</code> class. This is the first
-                        item's accordion body.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="flush-collapseTwo"
-                      >
-                        Accordion Item #2
-                      </button>
-                    </h2>
-                    <div
-                      id="flush-collapseTwo"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="flush-headingTwo"
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div class="accordion-body">
-                        Placeholder content for this accordion, which is
-                        intended to demonstrate the{" "}
-                        <code>.accordion-flush</code> class. This is the second
-                        item's accordion body. Let's imagine this being filled
-                        with some actual content.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseThree"
-                        aria-expanded="false"
-                        aria-controls="flush-collapseThree"
-                      >
-                        Accordion Item #3
-                      </button>
-                    </h2>
-                    <div
-                      id="flush-collapseThree"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="flush-headingThree"
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div class="accordion-body">
-                        Placeholder content for this accordion, which is
-                        intended to demonstrate the{" "}
-                        <code>.accordion-flush</code> class. This is the third
-                        item's accordion body. Nothing more exciting happening
-                        here in terms of content, but just filling up the space
-                        to make it look, at least at first glance, a bit more
-                        representative of how this would look in a real-world
-                        application.
-                      </div>
-                    </div>
-                  </div>
+              {problemsFound ? (
+                <QuestionsList questionsArray={problems} title={title} />
+              ) : (
+                <div className="col-md-9">
+                  <Error
+                    message="К сожалению, для данной категории не были подобраны часто задаваемые вопросы..."
+                    subMessage="Ближайшее время они будут добавлены!"
+                  />
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

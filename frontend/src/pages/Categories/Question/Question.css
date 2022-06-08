@@ -1,0 +1,8 @@
+.question-block {
+  min-height: 50px;
+  background-color: white;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  color: #000;
+  border-radius: 10px;
+}
