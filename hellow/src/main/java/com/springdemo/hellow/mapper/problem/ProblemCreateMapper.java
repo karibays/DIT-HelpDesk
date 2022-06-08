@@ -4,6 +4,7 @@ import com.springdemo.hellow.dto.problem.ProblemCreateDto;
 import com.springdemo.hellow.mapper.Mapper;
 import com.springdemo.hellow.model.Category;
 import com.springdemo.hellow.model.Problem;
+import com.springdemo.hellow.model.Status;
 import com.springdemo.hellow.model.User;
 import com.springdemo.hellow.repository.CategoryRepository;
 import com.springdemo.hellow.repository.UserRepository;
@@ -31,13 +32,15 @@ public class ProblemCreateMapper implements Mapper<ProblemCreateDto, Problem> {
         Problem problem = new Problem();
         copy(object, problem);
         problem.setUser(user);
-
         return problem;
     }
 
     @Override
     public Problem map(ProblemCreateDto fromObject, Problem toObject) {
+        Problem problem = new Problem();
         copy(fromObject, toObject);
+        Status status = new Status(1L,"Отправлено");
+        problem.setStatus(status);
         return toObject;
     }
 
