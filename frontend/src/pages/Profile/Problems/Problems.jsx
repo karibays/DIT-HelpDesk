@@ -1,10 +1,13 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import {GlobalState} from '../../../components/Context/GloblalState'
 import { fetchUser } from "../../../utils/fetchUser";
 import "./Problems.css";
 
 const ChatList = () => {
-  const [problems, setProblems] = useState([]);
+  
+  const state = useContext(GlobalState)
+  const [problems, setProblems] = state.problemsAPI.problems;
 
   function deleteProblem(id) {
     console.log(id);
@@ -17,18 +20,7 @@ const ChatList = () => {
       .catch((err) => console.warn(err));
   }
 
-  useEffect(() => {
-    const user = fetchUser();
 
-    axios
-      .get(`http://10.1.11.249:8080/problems/user/${user.id}`)
-      .then((res) => {
-        setProblems(res.data);
-      })
-      .catch(function (error) {
-        console.log("Error while fetching problems: " + error.message);
-      });
-  }, []);
 
   return (
     <div className="container">
