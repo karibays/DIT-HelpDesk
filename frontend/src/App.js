@@ -7,6 +7,7 @@ import {
   NoPage,
   Ticket,
   Profile,
+  AdminPage,
   Login,
 } from "./pages";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="ticket" element={<Ticket />} />
         <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
+        <Route path="adminPage" element={<AdminPage />} />
       </Routes>
     </div>
   );
