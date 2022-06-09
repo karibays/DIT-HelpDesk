@@ -17,8 +17,11 @@ const Ticket = () => {
     e.preventDefault();
     let form_data = new FormData();
     const description = `
-    ${tried} <br>
-    ${brought} <br>
+    Что хотели сделать:\n
+    ${tried}\n
+    Что привело к проблеме:\n
+    ${brought}\n
+    Что вы испробовали для решения проблемы:\n
     ${solve}
     `;
     console.log(description);
