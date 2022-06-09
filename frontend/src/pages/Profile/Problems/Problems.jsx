@@ -8,15 +8,20 @@ const ChatList = () => {
   const state = useContext(GlobalState);
   const [problems, setProblems] = state.problemsAPI.problems;
 
-  function deleteProblem(id) {
+  function deleteProblem(id, title) {
     console.log(id);
-    axios
-      .delete(`http://10.1.11.249:8080/problems/${id}`)
-      .then((res) => {
-        console.log(res.status);
-        window.location.reload();
-      })
-      .catch((err) => console.warn(err));
+    let confirmDelete = window.confirm(
+      `Вы уверены, что хотите удалить запись '${title}?'`
+    );
+    console.log(confirmDelete);
+    if (confirmDelete)
+      axios
+        .delete(`http://10.1.11.249:8080/problems/${id}`)
+        .then((res) => {
+          console.log(res.status);
+          window.location.reload();
+        })
+        .catch((err) => console.warn(err));
   }
 
   return (
@@ -48,7 +53,7 @@ const ChatList = () => {
                       <button
                         type="button"
                         class="btn btn-outline-danger"
-                        onClick={() => deleteProblem(id)}
+                        onClick={() => deleteProblem(id, title)}
                       >
                         Удалить
                       </button>
