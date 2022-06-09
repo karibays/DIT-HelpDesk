@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import NavBar from "../../components/NavBar";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Ticket.css";
+import NavBar from "../../components/NavBar";
 import { fetchUser } from "../../utils/fetchUser";
+import "./Ticket.css";
 
 const Ticket = () => {
+  const navigate = useNavigate();
   const { id } = fetchUser();
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [tried, setTry] = useState("");
@@ -12,17 +14,21 @@ const Ticket = () => {
   const [solve, setSolve] = useState("");
 
   const problemSubmit = async (e) => {
+    e.preventDefault();
     let form_data = new FormData();
     const description = `
-    ${tried} <br>
-    ${brought} <br>
+    Что хотели сделать:\n
+    ${tried}\n
+    Что привело к проблеме:\n
+    ${brought}\n
+    Что вы испробовали для решения проблемы:\n
     ${solve}
     `;
     console.log(description);
 
     form_data = {
       title: tried,
-      description,
+      description: description,
       userId: id,
       categoryId: selectedCategory,
     };
@@ -34,7 +40,7 @@ const Ticket = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        if (res.status === 201) navigate("/profile");
       })
       .catch((error) => {
         console.warn(error);
@@ -60,11 +66,12 @@ const Ticket = () => {
               id="exampleSelect1"
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value="1">Moodle</option>
+              <option value="2">MS Teams</option>
+              <option value="4">Компьютер</option>
+              <option value="5">Интернет</option>
+              <option value="6">Проектор</option>
+              <option value="7">Другое</option>
             </select>
           </div>
           <div className="form-group">

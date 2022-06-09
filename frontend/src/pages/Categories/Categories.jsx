@@ -10,10 +10,9 @@ const Categories = () => {
   const [problems, setProblems] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const [title, setTitle] = useState("");
-  // const [problemsFound, setProblemsFound] = useState(true);
 
   const handleSearch = (e) => {
-    if (e.target.value) {
+    if (e.target.value.length > 3) {
       setTitle(e.target.value);
       axios
         .get(`http://10.1.11.249:8080/problems?title=${e.target.value}`)

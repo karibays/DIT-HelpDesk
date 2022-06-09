@@ -51,11 +51,11 @@ const NavBar = ({ lightMode }) => {
                   База Знаний
                 </Link>
               </li>
-              <li className="nav-item mr-3">
+              {/* <li className="nav-item mr-3">
                 <Link to="/forum" className={textColorClasses}>
                   Форум
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item mr-3">
                 <Link to="/ticket" className={ticketBtnClasses}>
                   Заполнить анкету
