@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import NavBar from "../../components/NavBar";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Ticket.css";
+import NavBar from "../../components/NavBar";
 import { fetchUser } from "../../utils/fetchUser";
+import "./Ticket.css";
 
 const Ticket = () => {
+  const navigate = useNavigate();
   const { id } = fetchUser();
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [tried, setTry] = useState("");
@@ -12,6 +14,7 @@ const Ticket = () => {
   const [solve, setSolve] = useState("");
 
   const problemSubmit = async (e) => {
+    e.preventDefault();
     let form_data = new FormData();
     const description = `
     ${tried} <br>
@@ -34,7 +37,7 @@ const Ticket = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        if (res.status === 201) navigate("/profile");
       })
       .catch((error) => {
         console.warn(error);
