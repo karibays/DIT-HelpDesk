@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
-import {GlobalState} from '../../../components/Context/GloblalState'
+import { GlobalState } from "../../../components/Context/GloblalState";
 import { fetchUser } from "../../../utils/fetchUser";
 import "./Problems.css";
 
 const ChatList = () => {
-  
-  const state = useContext(GlobalState)
+  const state = useContext(GlobalState);
   const [problems, setProblems] = state.problemsAPI.problems;
 
   function deleteProblem(id) {
@@ -19,8 +18,6 @@ const ChatList = () => {
       })
       .catch((err) => console.warn(err));
   }
-
-
 
   return (
     <div className="container">
@@ -52,9 +49,9 @@ const ChatList = () => {
                     >
                       Удалить
                     </button>
-                    <button type="button" class="btn btn-outline-warning">
+                    {/* <button type="button" class="btn btn-outline-warning">
                       Изменить
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </a>
