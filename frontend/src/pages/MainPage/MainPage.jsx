@@ -1,8 +1,13 @@
 import React from "react";
 import NavBar from "../../components/NavBar";
 import "./MainPage.css";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+  function AdminPageFunc() {
+    navigate("/AdminPage");
+  }
   return (
     // <div>
     //   <NavBar />
@@ -22,6 +27,9 @@ const MainPage = () => {
           <button type="submit" className="searchButton">
             <i className="fa fa-search" />
           </button>
+        </form>
+        <form className="adminForm">
+          <button type="submit" className="adminButton" onClick={AdminPageFunc}>Manage Admin privileges</button>
         </form>
       </div>
       <div className="FAQDiv">
