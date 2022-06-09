@@ -12,7 +12,9 @@ public class ProblemReadDto {
 
     Long id;
     String title;
-    String description;
+    String question;
+    String action;
+    String consequences;
     Instant createdAt;
     StatusReadDto status;
     CategoryReadDto category;

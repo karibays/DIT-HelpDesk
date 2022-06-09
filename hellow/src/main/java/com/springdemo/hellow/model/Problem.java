@@ -25,7 +25,11 @@ public class Problem extends AuditingEntity<Long> {
 
     private String title;
 
-    private String description;
+    private String question;
+
+    private String action;
+
+    private String consequences;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", columnDefinition = "1")
@@ -44,7 +48,9 @@ public class Problem extends AuditingEntity<Long> {
 
     public Problem(ProblemRequest problemRequest) {
         this.title = problemRequest.getTitle();
-        this.description = problemRequest.getDescription();
+        this.question = problemRequest.getQuestion();
+        this.action = problemRequest.getAction();
+        this.consequences = problemRequest.getConsequences();
         this.user = problemRequest.getUser();
     }
 }

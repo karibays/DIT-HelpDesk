@@ -38,7 +38,9 @@ public class ProblemReadMapper implements Mapper<Problem, ProblemReadDto> {
         return new ProblemReadDto(
                 object.getId(),
                 object.getTitle(),
-                object.getDescription(),
+                object.getQuestion(),
+                object.getAction(),
+                object.getConsequences(),
                 object.getCreatedAt(),
                 status,
                 category,

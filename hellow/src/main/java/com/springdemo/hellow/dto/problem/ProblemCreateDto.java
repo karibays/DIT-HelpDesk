@@ -12,7 +12,9 @@ import java.time.LocalDate;
 @FieldNameConstants
 public class ProblemCreateDto {
     String title;
-    String description;
+    String question;
+    String action;
+    String consequences;
     Long userId;
     Long categoryId;
     Long statusId =1L;

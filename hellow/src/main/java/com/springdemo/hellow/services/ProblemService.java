@@ -122,7 +122,9 @@ public class ProblemService {
     public void updateProblem(Problem inProblem) {
         Problem dbPost = problemRepository.getById(inProblem.getId());
         if(dbPost != null) {
-            dbPost.setDescription(inProblem.getDescription());
+            dbPost.setQuestion(inProblem.getQuestion());
+            dbPost.setAction(inProblem.getAction());
+            dbPost.setConsequences(inProblem.getConsequences());
             dbPost.setTitle(inProblem.getTitle());
             problemRepository.save(dbPost);
             BeanUtils.copyProperties(dbPost, inProblem);
