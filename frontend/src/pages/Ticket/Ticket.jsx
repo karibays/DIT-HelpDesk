@@ -66,11 +66,12 @@ const Ticket = () => {
               id="exampleSelect1"
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value="1">Moodle</option>
+              <option value="2">MS Teams</option>
+              <option value="4">Компьютер</option>
+              <option value="5">Интернет</option>
+              <option value="6">Проектор</option>
+              <option value="7">Другое</option>
             </select>
           </div>
           <div className="form-group">
