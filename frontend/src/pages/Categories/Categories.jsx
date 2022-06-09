@@ -10,7 +10,6 @@ const Categories = () => {
   const [problems, setProblems] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const [title, setTitle] = useState("");
-  // const [problemsFound, setProblemsFound] = useState(true);
 
   const handleSearch = (e) => {
     if (e.target.value.length > 3) {
