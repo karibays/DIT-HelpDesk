@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
+import Badge from "../Badge";
 import { GlobalState } from "../../../components/Context/GloblalState";
-import { fetchUser } from "../../../utils/fetchUser";
 import "./Problems.css";
 
 const ChatList = () => {
@@ -27,7 +27,7 @@ const ChatList = () => {
           {problems
             .slice(0)
             .reverse()
-            .map(({ id, title, description, createdAt, category }) => {
+            .map(({ id, title, description, createdAt, category, status }) => {
               return (
                 <a
                   href="#"
@@ -36,9 +36,7 @@ const ChatList = () => {
                 >
                   <div className="problems-block">
                     <div className="problems-content">
-                      <span className="badge bg-success problems-badge">
-                        Принято
-                      </span>
+                      <Badge status={status?.id} />
                       <h4>{title}</h4>
                       <h6 className="text-muted">{category?.categoryName}</h6>
                       <p>{description}</p>
