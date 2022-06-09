@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../../components/NavBar";
@@ -9,26 +9,20 @@ const Ticket = () => {
   const navigate = useNavigate();
   const { id } = fetchUser();
   const [selectedCategory, setSelectedCategory] = useState(1);
-  const [tried, setTry] = useState("");
-  const [brought, setBrought] = useState("");
-  const [solve, setSolve] = useState("");
+  const [selectOptions, setSelectOptions] = useState([]);
+  const [title, setTitle] = useState("");
+  const [action, setAction] = useState("");
+  const [consequences, setConsequences] = useState("");
+  const [solution, setSolution] = useState("");
 
   const problemSubmit = async (e) => {
     e.preventDefault();
     let form_data = new FormData();
-    const description = `
-    Что хотели сделать:\n
-    ${tried}\n
-    Что привело к проблеме:\n
-    ${brought}\n
-    Что вы испробовали для решения проблемы:\n
-    ${solve}
-    `;
-    console.log(description);
-
     form_data = {
-      title: tried,
-      description: description,
+      title: title,
+      question: action,
+      consequences: consequences,
+      action: solution,
       userId: id,
       categoryId: selectedCategory,
     };
@@ -40,12 +34,21 @@ const Ticket = () => {
         },
       })
       .then((res) => {
-        if (res.status === 201) navigate("/profile");
+        navigate("/profile");
       })
       .catch((error) => {
         console.warn(error);
       });
   };
+
+  useEffect(() => {
+    axios
+      .get("http://10.1.11.249:8080/problems/categories")
+      .then(({ data }) => {
+        setSelectOptions(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
@@ -66,13 +69,24 @@ const Ticket = () => {
               id="exampleSelect1"
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="1">Moodle</option>
-              <option value="2">MS Teams</option>
-              <option value="4">Компьютер</option>
-              <option value="5">Интернет</option>
-              <option value="6">Проектор</option>
-              <option value="7">Другое</option>
+              {selectOptions.map(({ id, categoryName }) => (
+                <option key={id} value={id}>
+                  {categoryName}
+                </option>
+              ))}
             </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Придумайте заголовой для вашей проблемы
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="exampleTextarea" className="form-label">
@@ -82,7 +96,7 @@ const Ticket = () => {
               className="form-control"
               id="exampleTextarea"
               rows="3"
-              onChange={(e) => setTry(e.target.value)}
+              onChange={(e) => setAction(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">
@@ -93,7 +107,7 @@ const Ticket = () => {
               className="form-control"
               id="exampleTextarea"
               rows="3"
-              onChange={(e) => setBrought(e.target.value)}
+              onChange={(e) => setConsequences(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">
@@ -104,7 +118,7 @@ const Ticket = () => {
               className="form-control"
               id="exampleTextarea"
               rows="3"
-              onChange={(e) => setSolve(e.target.value)}
+              onChange={(e) => setSolution(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">

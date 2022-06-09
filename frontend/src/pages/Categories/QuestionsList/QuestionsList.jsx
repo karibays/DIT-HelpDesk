@@ -10,7 +10,7 @@ const QuestionsList = ({ questionsArray }) => {
       </h4>
       <div className="questions-list">
         {questionsArray.map((question) => {
-          return <Question problem={question} key={question.id} />;
+          return <Question problem={question} />;
         })}
       </div>
     </div>

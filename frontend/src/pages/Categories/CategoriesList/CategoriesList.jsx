@@ -12,7 +12,7 @@ const CategoriesList = ({ categoriesArray, handleSelect }) => {
               onClick={() => handleSelect(id)}
               key={id}
             >
-              <a href="#">{categoryName} </a>
+              <a href="#">{categoryName}</a>
             </li>
           );
         })}
