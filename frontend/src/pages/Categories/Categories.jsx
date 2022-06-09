@@ -25,7 +25,7 @@ const Categories = () => {
 
   const handleSelect = (selectedCategory) => {
     axios
-      .get(`http://10.1.11.249:8080/problems/category/${selectedCategory}`)
+      .get(`http://10.1.11.249:8080/problem/faq/${selectedCategory}`)
       .then(({ data }) => {
         setProblems(data);
       })
@@ -33,7 +33,11 @@ const Categories = () => {
 
     axios
       .get("http://10.1.11.249:8080/problems/categories")
-      .then(({ data }) => setTitle(data[selectedCategory - 1].categoryName))
+      .then(({ data }) => {
+        setTitle(
+          data.find((item) => item.id === selectedCategory).categoryName
+        );
+      })
       .catch((err) => console.log(err));
   };
 
@@ -70,7 +74,7 @@ const Categories = () => {
               </div>
               <div className="col-md-9">
                 <h1 className="category-title">{title}</h1>
-                <QuestionsList questionsArray={problems} />
+                <QuestionsList questionsArray={problems} categoryName={title} />
               </div>
             </div>
           </div>
