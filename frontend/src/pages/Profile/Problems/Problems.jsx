@@ -29,10 +29,8 @@ const ChatList = () => {
       <div className="problems-container">
         <h3>Ваши анкеты</h3>
         <div className="problems-items list-group">
-          {problems
-            .slice(0)
-            .reverse()
-            .map(({ id, title, description, createdAt, category, status }) => {
+          {problems.map(
+            ({ id, title, description, createdAt, category, status }) => {
               return (
                 <a
                   href="#"
@@ -52,7 +50,7 @@ const ChatList = () => {
                     <div className="problems-btns">
                       <button
                         type="button"
-                        class="btn btn-outline-danger"
+                        className="btn btn-outline-danger"
                         onClick={() => deleteProblem(id, title)}
                       >
                         Удалить
@@ -61,7 +59,8 @@ const ChatList = () => {
                   </div>
                 </a>
               );
-            })}
+            }
+          )}
         </div>
       </div>
     </div>
