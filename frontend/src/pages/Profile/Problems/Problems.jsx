@@ -33,9 +33,9 @@ const ChatList = () => {
               >
                 <div className="problems-block">
                   <div className="problems-content">
-                    <small className="text-muted">#{id}</small>
+                    <span class="badge bg-success problems-badge">Принято</span>
                     <h4>{title}</h4>
-                    <h6>{category?.categoryName}</h6>
+                    <h6 className="text-muted">{category?.categoryName}</h6>
                     <p>{description}</p>
                     <small className="text-muted">
                       Создано в {createdAt.slice(0, 10)}
@@ -49,9 +49,6 @@ const ChatList = () => {
                     >
                       Удалить
                     </button>
-                    {/* <button type="button" class="btn btn-outline-warning">
-                      Изменить
-                    </button> */}
                   </div>
                 </div>
               </a>

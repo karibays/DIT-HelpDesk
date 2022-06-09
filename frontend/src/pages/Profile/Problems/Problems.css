@@ -32,3 +32,8 @@
   display: block;
   margin-bottom: 5px;
 }
+
+.problems-badge {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
