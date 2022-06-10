@@ -20,3 +20,10 @@
 .categories-item a:hover {
   text-decoration: none;
 }
+
+.categories-list-loading {
+  width: 200px;
+  min-height: 600px;
+  background-color: white;
+  border-radius: 10px;
+}
