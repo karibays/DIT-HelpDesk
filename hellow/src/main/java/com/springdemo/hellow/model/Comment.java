@@ -15,10 +15,10 @@ public class Comment {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     private Problem problem;
-    private String username;
     private Long userId;
     private String message;
     private LocalDateTime createdDate;
+
 
     @PrePersist
     protected void onCreate(){

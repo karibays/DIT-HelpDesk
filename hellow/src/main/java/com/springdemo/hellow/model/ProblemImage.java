@@ -20,7 +20,7 @@ public class ProblemImage {
     private byte[] image;
     private Date date;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "problemid")
+    @JoinColumn(name = "problem_id")
     private Problem problem;
 
     public ProblemImage(ProblemImageRequest problemImageRequest){

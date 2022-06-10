@@ -10,7 +10,6 @@ import com.springdemo.hellow.mapper.problem.ProblemEditMapper;
 import com.springdemo.hellow.mapper.problem.ProblemReadMapper;
 import com.springdemo.hellow.model.Problem;
 import com.springdemo.hellow.queryDsl.QPredicates;
-import com.springdemo.hellow.repository.MessageRepository;
 import com.springdemo.hellow.repository.ProblemRepository;
 import com.springdemo.hellow.repository.UserRepository;
 import com.springdemo.hellow.requests.ProblemRequest;
@@ -32,7 +31,6 @@ import static com.springdemo.hellow.model.QProblem.problem;
 public class ProblemService {
 
     private final UserRepository userRepository;
-    private final MessageRepository messageRepository;
     private final ProblemRepository problemRepository;
     private final ProblemReadMapper problemReadMapper;
     private final ProblemCreateMapper problemCreateMapper;
@@ -105,31 +103,6 @@ public class ProblemService {
     }
 
 
-    //Problem Controller
-
-    public Problem create(ProblemRequest request) {
-        request.setDate(new Date());
-        return problemRepository.save(new Problem(request));
-    }
-
-//    public List<Problem> getProblemsByUserId(long id) {
-//        User user = userRepository.getUserById(id);
-//        return problemRepository.findProblemsByUser(user);
-//    }
-
-    public void deleteProblem(Long postId) {
-        problemRepository.deleteById(postId);
-    }
-
-    public void updateProblem(Problem inProblem) {
-        Problem dbPost = problemRepository.getById(inProblem.getId());
-        if(dbPost != null) {
-            dbPost.setDescription(inProblem.getDescription());
-            dbPost.setTitle(inProblem.getTitle());
-            problemRepository.save(dbPost);
-            BeanUtils.copyProperties(dbPost, inProblem);
-        }
-    }
 
 
 }
