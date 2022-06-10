@@ -19,6 +19,10 @@ const Login = () => {
     localStorage.clear();
   }
 
+  function navigateByRole(role) {
+    role === "ADMIN" ? navigate("/adminPage") : navigate("/");
+  }
+
   function handleCookie() {
     const form_data = new FormData();
     setloginInputClasses("form-control form-control-lg");
@@ -34,7 +38,7 @@ const Login = () => {
         console.log(data);
         if (data) {
           setUser(data);
-          navigate("/");
+          navigateByRole(data.role);
         } else {
           setloginInputClasses((prev) => (prev += " is-invalid"));
           setError(true);
