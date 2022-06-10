@@ -4,49 +4,69 @@ import QuestionsList from "./QuestionsList";
 import CategoriesList from "./CategoriesList";
 import NavBar from "../../components/NavBar";
 import Error from "../../components/Error";
+import Loader from "../../components/Loader";
 import "./Categories.css";
 
 const Categories = () => {
+  const categoriesArray = [
+    {
+      id: 1,
+      categoryName: "Moodle",
+    },
+    {
+      id: 2,
+      categoryName: "MS Teams",
+    },
+    {
+      id: 4,
+      categoryName: "Компьютер",
+    },
+    {
+      id: 5,
+      categoryName: "Интернет",
+    },
+    {
+      id: 6,
+      categoryName: "Проектор",
+    },
+    {
+      id: 7,
+      categoryName: "Другое",
+    },
+  ];
   const [problems, setProblems] = useState([]);
-  const [categoriesList, setCategoriesList] = useState([]);
   const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(1);
 
-  const handleSearch = (e) => {
-    if (e.target.value.length > 3) {
-      setTitle(e.target.value);
-      axios
-        .get(`http://10.1.11.249:8080/problems?title=${e.target.value}`)
-        .then(({ data: { content } }) => {
-          setProblems(content);
-        })
-        .catch((err) => console.log(err));
-    } else handleSelect(1);
-  };
+  // const handleSearch = (e) => {
+  //   if (e.target.value.length > 3) {
+  //     setTitle(e.target.value);
+  //     axios
+  //       .get(`http://10.1.11.249:8080/problems?title=${e.target.value}`)
+  //       .then(({ data: { content } }) => setProblems(content))
+  //       .catch(() => setError(true));
+  //   } else handleSelect(1);
+  // };
 
   const handleSelect = (selectedCategory) => {
+    setLoading(true);
+    setTitle(
+      categoriesArray.find((item) => item.id === selectedCategory).categoryName
+    );
     axios
       .get(`http://10.1.11.249:8080/problem/faq/${selectedCategory}`)
       .then(({ data }) => {
         setProblems(data);
+        setLoading(false);
       })
-      .catch((err) => console.warn(err));
-
-    axios
-      .get("http://10.1.11.249:8080/problems/categories")
-      .then(({ data }) => {
-        setTitle(
-          data.find((item) => item.id === selectedCategory).categoryName
-        );
-      })
-      .catch((err) => console.log(err));
+      .catch(() => setError(true));
   };
 
   useEffect(() => {
+    setTitle("Moodle");
     handleSelect(1);
-    axios
-      .get("http://10.1.11.249:8080/problems/categories")
-      .then(({ data }) => setCategoriesList(data))
-      .catch((err) => console.warn(err));
   }, []);
 
   return (
@@ -60,7 +80,7 @@ const Categories = () => {
               type="text"
               placeholder="Поиск проблемы"
               id="inputLarge"
-              onChange={handleSearch}
+              // onChange={handleSearch}
             />
           </div>
           <div className="categories-content">
@@ -68,13 +88,13 @@ const Categories = () => {
               <div className="categories-navbar col-md-3">
                 <h2>База Знаний</h2>
                 <CategoriesList
-                  categoriesArray={categoriesList}
+                  categoriesArray={categoriesArray}
                   handleSelect={handleSelect}
                 />
               </div>
               <div className="col-md-9">
                 <h1 className="category-title">{title}</h1>
-                <QuestionsList questionsArray={problems} categoryName={title} />
+                <QuestionsList questionsArray={problems} loading={loading} />
               </div>
             </div>
           </div>
