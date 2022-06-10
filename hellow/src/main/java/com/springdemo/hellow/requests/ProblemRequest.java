@@ -14,7 +14,9 @@ import java.util.Date;
 @Data
 public class ProblemRequest {
     private String title;
-    private String description;
+    private String question;
+    private String action;
+    private String consequences;
     private Long user_id;
     private Date date;
 

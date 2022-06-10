@@ -48,7 +48,9 @@ public class ProblemCreateMapper implements Mapper<ProblemCreateDto, Problem> {
 
     private void copy(ProblemCreateDto object, Problem problem){
         problem.setTitle(object.getTitle());
-        problem.setDescription(object.getDescription());
+        problem.setQuestion(object.getQuestion());
+        problem.setAction(object.getAction());
+        problem.setConsequences(object.getConsequences());
         problem.setUser(getUser(object.getUserId()));
         problem.setCategory(getCategory(object.getCategoryId()));
         problem.setStatus(getStatus(object.getStatusId()));

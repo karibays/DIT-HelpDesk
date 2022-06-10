@@ -103,6 +103,36 @@ public class ProblemService {
     }
 
 
+<<<<<<< HEAD
+=======
+    //Problem Controller
+
+    public Problem create(ProblemRequest request) {
+        request.setDate(new Date());
+        return problemRepository.save(new Problem(request));
+    }
+
+//    public List<Problem> getProblemsByUserId(long id) {
+//        User user = userRepository.getUserById(id);
+//        return problemRepository.findProblemsByUser(user);
+//    }
+
+    public void deleteProblem(Long postId) {
+        problemRepository.deleteById(postId);
+    }
+
+    public void updateProblem(Problem inProblem) {
+        Problem dbPost = problemRepository.getById(inProblem.getId());
+        if(dbPost != null) {
+            dbPost.setQuestion(inProblem.getQuestion());
+            dbPost.setAction(inProblem.getAction());
+            dbPost.setConsequences(inProblem.getConsequences());
+            dbPost.setTitle(inProblem.getTitle());
+            problemRepository.save(dbPost);
+            BeanUtils.copyProperties(dbPost, inProblem);
+        }
+    }
+>>>>>>> 2da916f9541dc565ce749525de37a1e591b6fd4f
 
 
 }
