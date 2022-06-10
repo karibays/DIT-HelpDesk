@@ -117,7 +117,7 @@ const AdminPage = () => {
                 <NavBar />
                 <div className="container">
                     <div className="divCRUD1">
-                        <h1>Create new employee account</h1>
+                        <h1 className="adminPageH1">Create new employee account</h1>
                         <form onSubmit={createAdminFunc}>
                             <fieldset className="fieldSet">
                                 <div className="form-group">
@@ -161,7 +161,7 @@ const AdminPage = () => {
                         </form>
                     </div>
                     <div className="divCRUD2">
-                        <h1>Update account's role</h1>
+                        <h1 className="adminPageH1">Update account's role</h1>
                         <form onSubmit={updateRoleFunc} id="formUpdate">
                             <fieldset>
                                 <div className="form-group">
@@ -185,7 +185,7 @@ const AdminPage = () => {
                         </form>
                     </div>
                     <div className="divCRUD3">
-                        <h1>Delete employee account</h1>
+                        <h1 className="adminPageH1">Delete employee account</h1>
                         <form onSubmit={deleteFunc}>
                             <fieldset>
                                 <div className="form-group">
@@ -201,7 +201,7 @@ const AdminPage = () => {
                 </div>
             </div>
             <div className="topDiv2">
-                <h1>Show all employees accounts</h1>
+                <h1 className="adminPageH1">Show all employees accounts</h1>
                 <div className="container">
 
                     {users&&(

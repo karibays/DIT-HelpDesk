@@ -10,7 +10,15 @@
     border: 1px solid black;
     border-collapse:collapse;
 }
-.container {
+.topDiv2 .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.topDiv1 .container {
     height: 100%;
     width: 100%;
     display: flex;
@@ -30,7 +38,7 @@
     padding-right: 20px;
 }
 
-h1 {
+h1.adminPageH1 {
     padding-bottom: 20px;
 }
 
@@ -56,13 +64,13 @@ h1 {
     border: 1px solid black;
 }
 
-td, th {
+.tableAdmins td, th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
 
-th {
+.tableAdmins th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -70,6 +78,7 @@ th {
 
 .readAdmins {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
