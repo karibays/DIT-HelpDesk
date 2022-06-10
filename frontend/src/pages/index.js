@@ -6,5 +6,6 @@ import NoPage from "./NoPage";
 import Profile from "./Profile";
 import Login from "./Login";
 import AdminPage from "./AdminPage"
+import AdminHome from "./AdminHome";
 
-export { Categories, Forum, Ticket, MainPage, NoPage, Profile, AdminPage, Login };
+export { Categories, Forum, Ticket, MainPage, NoPage, Profile, AdminPage, Login, AdminHome };
