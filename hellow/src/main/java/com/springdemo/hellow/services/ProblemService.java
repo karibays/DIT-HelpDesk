@@ -103,8 +103,6 @@ public class ProblemService {
     }
 
 
-<<<<<<< HEAD
-=======
     //Problem Controller
 
     public Problem create(ProblemRequest request) {
@@ -132,7 +130,5 @@ public class ProblemService {
             BeanUtils.copyProperties(dbPost, inProblem);
         }
     }
->>>>>>> 2da916f9541dc565ce749525de37a1e591b6fd4f
-
 
 }
