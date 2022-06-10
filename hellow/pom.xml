@@ -191,6 +191,7 @@
                             <artifactId>javax.persistence-api</artifactId>
                             <version>${javax.persistence-api}</version>
                         </path>
+
                     </annotationProcessorPaths>
                     <source>16</source>
                     <target>16</target>
