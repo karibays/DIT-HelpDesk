@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { fetchUser, setUser } from "../../utils/fetchUser";
 import axios from "axios";
 
 import "./Login.css";
+import { AuthContext } from "../../components/Context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const {setUser} = useContext(AuthContext)
   const [barcode, setBarcode] = useState("");
   const [error, setError] = useState(false);
   const [loginInputClasses, setloginInputClasses] = useState(
@@ -29,6 +30,7 @@ const Login = () => {
         },
       })
       .then(({ data }) => {
+        console.log(data);
         if (data) {
           setUser(data);
           navigate("/");
