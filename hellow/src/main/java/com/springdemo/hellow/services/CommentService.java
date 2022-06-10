@@ -10,6 +10,7 @@ import com.springdemo.hellow.repository.ProblemRepository;
 import com.springdemo.hellow.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.Stream;
 
@@ -39,6 +40,17 @@ public class CommentService {
     public Stream<CommentReadDto> findCommentsByProblemId(Long problemId) {
         return commentRepository.findCommentsByProblem_Id(problemId).stream()
                 .map(commentReadMapper::map);
+    }
+
+    @Transactional
+    public boolean delete(Long id) {
+        return commentRepository.findById(id)
+                .map(entity -> {
+                    commentRepository.delete(entity);
+                    commentRepository.flush();
+                    return true;
+                })
+                .orElse(false);
     }
 
 
