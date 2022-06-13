@@ -4,11 +4,14 @@ import Badge from "../Badge";
 import Error from "../../../components/Error";
 import { GlobalState } from "../../../components/Context/GloblalState";
 import "./Problems.css";
-import { Link } from "react-router-dom";
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 
 const ChatList = () => {
   const state = useContext(GlobalState);
   const [problems, setProblems] = state.problemsAPI.problems;
+  const navigate = useNavigate()
+
+  
 
   function deleteProblem(id, title) {
     console.log(id);
@@ -34,11 +37,11 @@ const ChatList = () => {
           {problems.map(
             ({ id, title, description, createdAt, category, status }) => {
               return (
-                <a
-                  href="#"
-                  className="problems-item list-group-item list-group-item-action"
-                  key={id}
-                >
+                <a 
+                onClick={() => {navigate('/details', {state: id})}}
+                className="problems-item list-group-item list-group-item-action mt-2"
+                key={id}
+              >
                   <div className="problems-block">
                     <div className="problems-content">
                       <Badge status={status?.id} />
