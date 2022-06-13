@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { clearStorage } from "../../utils/userLocalStorage";
+import { AuthContext } from "../Context/AuthContext";
 
 import "./NavBar.css";
 
+
 const NavBar = ({ lightMode, admin }) => {
+  const {setLoggedIn} = useContext(AuthContext)
   const navigate = useNavigate();
   const backgroundColor = lightMode
     ? { backgroundColor: "white" }
@@ -34,6 +38,7 @@ const NavBar = ({ lightMode, admin }) => {
   const handleExit = () => {
     navigate("/login");
     clearStorage();
+    setLoggedIn(false)
   };
 
   return (
