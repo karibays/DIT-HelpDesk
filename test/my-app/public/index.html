@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouding</title>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-messaging.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBlg0XWhroVthcRo6iF4D3LrwsssGsF9pc",
+          authDomain: "dit-push-notification.firebaseapp.com",
+          projectId: "dit-push-notification",
+          storageBucket: "dit-push-notification.appspot.com",
+          messagingSenderId: "370587011418",
+          appId: "1:370587011418:web:7620d6a3b2997cccad0b63"
+        };
+        window.addEventListener("click", (e) => {
+            switch (e.target.id) {
+                case "btnPermissions":
+                    initFirebaseMessagingRegistration();
+                    break;
+            }
+        });
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        //        const analytics = getAnalytics(app);
+        const messaging = getMessaging(app);
+
+        function initFirebaseMessagingRegistration() {
+
+            
+
+            // Don't forget your vapidKey here
+            getToken(messaging, { vapidKey: "BPCOsxW6MBQjuY6HX17VJDP2mXtvATy4kFg7_jWo-E8R2jskbJtBOZdlF9pZ9o6gsPuXaqdIoPRwTvkGZixY6_8" })
+                .then((t) => {
+                    tokenElement.innerHTML = "Token is " + t;
+                    console.log(t);
+                })
+                .catch(function (err) {
+                    errorElement.innerHTML = "Error: " + err;
+                    console.log("Didn't get notification permission", err);
+                });
+
+            onMessage(messaging, (payload) => {
+                console.log("Message received. ", JSON.stringify(payload));
+                notificationElement.innerHTML =
+                    notificationElement.innerHTML + " " + payload.data.notification;
+            });
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <h1>Welcome to Clouding</h1>
+        <div id="token" style="color:lightblue" role="alert"></div>
+        <div id="message" style="color:lightblue" role="alert"></div>
+        <div id="notification" style="color:green" role="alert"></div>
+        <div id="error" style="color:red" role="alert"></div>
+        <script>
+            messageElement = document.getElementById("message")
+            tokenElement = document.getElementById("token")
+            notificationElement = document.getElementById("notification")
+            errorElement = document.getElementById("error")
+        </script>
+        <button id="btnPermissions">Enable Firebase Messaging</button>
+
+    </main>
+
+</body>
+
+</html>
