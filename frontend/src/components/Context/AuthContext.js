@@ -11,12 +11,14 @@ export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const fetchUser = () => {
-    if (localStorage.getItem("user") === "undefined") {
+    if (localStorage.getItem("user") === null) {
+      
       setUsers("");
       return;
     }
     setUsers(JSON.parse(localStorage.getItem("user")));
     setLoggedIn(true);
+   
   };
 
   const setUser = (data) => {
@@ -26,14 +28,16 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+    console.log("fech user")
+  }, [loggedIn]);
 
   return (
     <AuthContext.Provider
       value={{
         users,
         setUser,
-        loggedState: [loggedIn, setLoggedIn],
+        loggedIn,
+        setLoggedIn,
       }}
     >
       {children}
