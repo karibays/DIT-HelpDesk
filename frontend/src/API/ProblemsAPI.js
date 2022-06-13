@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { fetchUser } from "../utils/fetchUser";
+import { fetchUser } from "../utils/userLocalStorage";
 import { AuthContext } from "../components/Context/AuthContext";
 
 function ProblemsAPI() {
   const [problems, setProblems] = useState([]);
-  const [allProblems, setAllProblems] = useState([])
-  const {users} = useContext(AuthContext);
+  const [allProblems, setAllProblems] = useState([]);
+  const { users } = useContext(AuthContext);
 
   useEffect(() => {
-    if(users.id) {
-      console.log("Get Problems")
+    if (users.id) {
+      console.log("Get Problems");
       axios
         .get(`http://10.1.11.249:8080/problems/user/${users.id}`)
         .then((res) => {
@@ -25,24 +25,20 @@ function ProblemsAPI() {
           console.log("Error while fetching problems: " + err.message);
         });
 
-        if(users.role == "ADMIN") {
-          console.log("Get all Problems")
-        axios
-        .get(`http://10.1.11.249:8080/problems/status/1`)
-        .then((res) => {
+      if (users.role == "ADMIN") {
+        console.log("Get all Problems");
+        axios.get(`http://10.1.11.249:8080/problems/status/1`).then((res) => {
           setAllProblems(res.data);
 
-          console.log(res.data)
-        })
-
-        }
+          console.log(res.data);
+        });
+      }
     }
-   
   }, [users]);
 
   return {
     problems: [problems, setProblems],
-    allProblems
+    allProblems,
   };
 }
 

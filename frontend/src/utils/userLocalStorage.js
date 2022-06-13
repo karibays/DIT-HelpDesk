@@ -10,3 +10,7 @@ export const setUser = (data) => {
   const userInfo = localStorage.setItem("user", JSON.stringify(data));
   return userInfo;
 };
+
+export const clearStorage = () => {
+  localStorage.clear();
+};
