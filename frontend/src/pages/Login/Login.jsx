@@ -10,7 +10,9 @@ const Login = () => {
   const { setUser } = useContext(AuthContext);
   const [barcode, setBarcode] = useState("");
   const [error, setError] = useState(false);
-  const [loginInputClasses, setloginInputClasses] = useState("");
+  const [loginInputClasses, setloginInputClasses] = useState(
+    "form-control form-control-lg"
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   function navigateByRole(role) {
@@ -19,7 +21,6 @@ const Login = () => {
 
   function handleLogIn() {
     const form_data = new FormData();
-    setloginInputClasses("form-control form-control-lg");
     setIsLoading(true);
     form_data.append("barcode", barcode);
     axios
@@ -43,6 +44,7 @@ const Login = () => {
         console.warn(error);
         setloginInputClasses((prev) => (prev += " is-invalid"));
         setError(true);
+        setIsLoading(false);
       });
   }
 
