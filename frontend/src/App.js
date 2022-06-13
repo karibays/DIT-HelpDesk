@@ -26,21 +26,21 @@ const App = () => {
   return (
     <div>
       <Routes>
-        {users.role == "ADMIN" ? (
+        {users && users.role === "ADMIN" ? (
           <>
             <Route path="/*" element={<AdminHome />} />
             <Route path="adminPage" element={<AdminPage />} />
+            <Route path="categories" element={<Categories role="admin" />} />
           </>
         ) : (
           <>
             <Route path="/*" element={<MainPage />} />
+            <Route path="categories" element={<Categories />} />
+            {/* <Route path="forum" element={<NoPage />} /> */}
+            <Route path="ticket" element={<Ticket />} />
+            <Route path="profile" element={<Profile />} />
           </>
         )}
-
-        <Route path="categories" element={<Categories />} />
-        {/* <Route path="forum" element={<NoPage />} /> */}
-        <Route path="ticket" element={<Ticket />} />
-        <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
       </Routes>
     </div>
