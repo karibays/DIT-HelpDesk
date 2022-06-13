@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { fetchUser } from "../../../utils/fetchUser";
+import { fetchUser } from "../../../utils/userLocalStorage";
 import "./ProfileInfo.css";
 
 const ProfileInfo = () => {
@@ -12,11 +12,10 @@ const ProfileInfo = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    
-        const { id, barcode } = fetchUser();
-        setName(id);
-        setBarcode(barcode);
-        setLoading(false);
+    const { id, barcode } = fetchUser();
+    setName(id);
+    setBarcode(barcode);
+    setLoading(false);
   }, [error]);
 
   return error ? (
@@ -32,7 +31,11 @@ const ProfileInfo = () => {
           <h4 className="loading text-muted">Загрузка...</h4>
         ) : (
           <>
-            <img src={'https://loremflickr.com/180/180/cat'} className="profile-image" alt="" />
+            <img
+              src={"https://loremflickr.com/180/180/cat"}
+              className="profile-image"
+              alt=""
+            />
             <div>
               <h4>{name}</h4>
               <ul className="list-group list-group-flush">

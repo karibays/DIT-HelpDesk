@@ -13,10 +13,6 @@ const Login = () => {
   const [loginInputClasses, setloginInputClasses] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function clearCookies() {
-    localStorage.clear();
-  }
-
   function navigateByRole(role) {
     role === "ADMIN" ? navigate("/adminPage") : navigate("/");
   }
@@ -82,16 +78,6 @@ const Login = () => {
             }
           >
             Login
-          </button>
-          <button
-            onClick={clearCookies}
-            className={
-              isLoading
-                ? "btn btn-primary login-btn disabled"
-                : "btn btn-primary login-btn"
-            }
-          >
-            Clear Cookies
           </button>
         </div>
       </div>

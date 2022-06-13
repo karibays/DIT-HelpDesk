@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../../components/NavBar";
-import { fetchUser } from "../../utils/fetchUser";
+import { fetchUser } from "../../utils/userLocalStorage";
 import "./Ticket.css";
 
 const Ticket = () => {
