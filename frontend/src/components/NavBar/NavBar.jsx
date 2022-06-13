@@ -5,7 +5,8 @@ import { AuthContext } from "../Context/AuthContext";
 
 import "./NavBar.css";
 
-const NavBar = ({ lightMode }) => {
+
+const NavBar = ({ lightMode, admin }) => {
   const {setLoggedIn} = useContext(AuthContext)
   const navigate = useNavigate();
   const backgroundColor = lightMode
@@ -61,6 +62,20 @@ const NavBar = ({ lightMode }) => {
 
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav ml-auto">
+              {admin && (
+                <>
+                  <li className="nav-item mr-3">
+                    <Link to="/adminPage" className={textColorClasses}>
+                      Главная
+                    </Link>
+                  </li>
+                  <li className="nav-item mr-3">
+                    <Link to="/adminHome" className={textColorClasses}>
+                      Страница анкет
+                    </Link>
+                  </li>
+                </>
+              )}
               <li className="nav-item mr-3">
                 <Link to="/categories" className={textColorClasses}>
                   База Знаний
@@ -71,16 +86,21 @@ const NavBar = ({ lightMode }) => {
                   Форум
                 </Link>
               </li> */}
-              <li className="nav-item mr-3">
-                <Link to="/ticket" className={ticketBtnClasses}>
-                  Заполнить анкету
-                </Link>
-              </li>
-              <li className="nav-item mr-3">
-                <Link to="/profile" className={textColorClasses}>
-                  Личный кабинет
-                </Link>
-              </li>
+              {!admin && (
+                <>
+                  <li className="nav-item mr-3">
+                    <Link to="/ticket" className={ticketBtnClasses}>
+                      Заполнить анкету
+                    </Link>
+                  </li>
+                  <li className="nav-item mr-3">
+                    <Link to="/profile" className={textColorClasses}>
+                      Личный кабинет
+                    </Link>
+                  </li>
+                </>
+              )}
+
               <li className="nav-item mr-3">
                 <button
                   type="button"

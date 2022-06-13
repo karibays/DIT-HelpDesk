@@ -12,7 +12,7 @@ const AdminHome = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar admin={true} />
       <div className="container">
         <div className="form-group">
           <input

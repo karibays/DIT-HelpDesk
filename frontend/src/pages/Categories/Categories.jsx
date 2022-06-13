@@ -7,7 +7,7 @@ import Error from "../../components/Error";
 import Loader from "../../components/Loader";
 import "./Categories.css";
 
-const Categories = () => {
+const Categories = ({ admin }) => {
   const categoriesArray = [
     {
       id: 1,
@@ -64,6 +64,10 @@ const Categories = () => {
       .catch(() => setError(true));
   };
 
+  const addQuestion = () => {
+    console.log("add");
+  };
+
   useEffect(() => {
     setTitle("Moodle");
     handleSelect(1);
@@ -71,10 +75,10 @@ const Categories = () => {
 
   return (
     <div>
-      <NavBar lightMode={true} />
+      <NavBar lightMode={true} admin={admin} />
       <div className="container">
         <div className="categories-block">
-          <div className="form-group">
+          <div className="form-group d-flex">
             <input
               className="categories-search form-control form-control-lg"
               type="text"
@@ -82,6 +86,14 @@ const Categories = () => {
               id="inputLarge"
               onChange={handleSearch}
             />
+            {admin && (
+              <button
+                className="btn btn-info btn-lg align-middle"
+                onClick={addQuestion}
+              >
+                Добавить
+              </button>
+            )}
           </div>
           <div className="categories-content">
             <div className="row">

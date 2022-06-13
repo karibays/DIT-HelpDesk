@@ -30,7 +30,7 @@ const App = () => {
           <>
             <Route path="/*" element={<AdminHome />} />
             <Route path="adminPage" element={<AdminPage />} />
-            <Route path="categories" element={<Categories role="admin" />} />
+            <Route path="categories" element={<Categories admin={true} />} />
           </>
         ) : (
           <>
