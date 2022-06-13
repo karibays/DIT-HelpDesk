@@ -27,13 +27,13 @@ public class CommentRestController {
     private final CommentMapper commentMapper;
 
 
-    @PostMapping("/{problemId}/create")
+    @PostMapping("/{problemId}")
     public void createComment(@Valid @RequestBody CommentCreateDto commentCreateDto,
                               @PathVariable("problemId") Long problemId) {
         commentService.saveComment(commentCreateDto, problemId);
     }
 
-    @GetMapping("/{problemId}/find")
+    @GetMapping("/{problemId}")
     public Stream<CommentReadDto> findCommentsByProblemId(@PathVariable("problemId") Long problemId){
         return commentService.findCommentsByProblemId(problemId);
     }

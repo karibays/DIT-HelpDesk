@@ -8,6 +8,14 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedEntityGraph(
+        name = "Problem.category.status.user",
+        attributeNodes = {
+                @NamedAttributeNode("category"),
+                @NamedAttributeNode("status"),
+                @NamedAttributeNode("user"),
+
+        })
 @JsonIgnoreProperties(
         {"hibernateLazyInitializer", "handler"}
 )
