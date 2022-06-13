@@ -101,7 +101,7 @@ const AdminPage = () => {
   return (
     <div>
       <div className="topDiv1">
-        <NavBar />
+        <NavBar admin={true} />
         <div className="container">
           <div className="divCRUD1">
             <h1 className="adminPageH1">Create new employee account</h1>

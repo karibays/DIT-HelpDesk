@@ -17,7 +17,7 @@ const Login = () => {
     role === "ADMIN" ? navigate("/adminPage") : navigate("/");
   }
 
-  function handleCookie() {
+  function handleLogIn() {
     const form_data = new FormData();
     setloginInputClasses("form-control form-control-lg");
     setIsLoading(true);
@@ -70,7 +70,7 @@ const Login = () => {
           )}
 
           <button
-            onClick={handleCookie}
+            onClick={handleLogIn}
             className={
               isLoading
                 ? "btn btn-primary login-btn disabled"
