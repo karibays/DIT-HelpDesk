@@ -10,9 +10,7 @@ const Login = () => {
   const { setUser } = useContext(AuthContext);
   const [barcode, setBarcode] = useState("");
   const [error, setError] = useState(false);
-  const [loginInputClasses, setloginInputClasses] = useState(
-    "form-control form-control-lg"
-  );
+  const [loginInputClasses, setloginInputClasses] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function clearCookies() {
