@@ -8,18 +8,19 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [users, setUsers] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const fetchUser = () => {
-    if (localStorage.getItem("user") !== "undefined") {
-      const userInfo = JSON.parse(localStorage.getItem("user"));
-      setUsers(userInfo);
-    } else {
-      localStorage.clear();
+    if (localStorage.getItem("user") === "undefined") {
+      setUsers("");
+      return;
     }
+    setUsers(JSON.parse(localStorage.getItem("user")));
+    setLoggedIn(true);
   };
 
   const setUser = (data) => {
-    const userInfo = localStorage.setItem("user", JSON.stringify(data));
+    localStorage.setItem("user", JSON.stringify(data));
     fetchUser();
   };
 
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         users,
         setUser,
+        loggedState: [loggedIn, setLoggedIn],
       }}
     >
       {children}

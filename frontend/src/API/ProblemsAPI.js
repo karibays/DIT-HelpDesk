@@ -1,15 +1,28 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { fetchUser } from "../utils/userLocalStorage";
 import { AuthContext } from "../components/Context/AuthContext";
 
 function ProblemsAPI() {
   const [problems, setProblems] = useState([]);
   const [allProblems, setAllProblems] = useState([]);
-  const { users } = useContext(AuthContext);
+  const { users, loggedState } = useContext(AuthContext);
 
   useEffect(() => {
-    if (users.id) {
+    if (!users) {
+      console.log("logged out, problems deleted");
+      setAllProblems([]);
+      setProblems([]);
+      return;
+    }
+    if (users.role == "ADMIN") {
+      console.log("Get all Problems");
+      axios.get(`http://10.1.11.249:8080/problems/status/1`).then((res) => {
+        setAllProblems(res.data);
+
+        console.log(res.data);
+      });
+    }
+    if (users.role == "USER") {
       console.log("Get Problems");
       axios
         .get(`http://10.1.11.249:8080/problems/user/${users.id}`)
@@ -24,15 +37,6 @@ function ProblemsAPI() {
         .catch((err) => {
           console.log("Error while fetching problems: " + err.message);
         });
-
-      if (users.role == "ADMIN") {
-        console.log("Get all Problems");
-        axios.get(`http://10.1.11.249:8080/problems/status/1`).then((res) => {
-          setAllProblems(res.data);
-
-          console.log(res.data);
-        });
-      }
     }
   }, [users]);
 

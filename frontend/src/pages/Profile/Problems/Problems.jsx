@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import Badge from "../Badge";
+import Error from "../../../components/Error";
 import { GlobalState } from "../../../components/Context/GloblalState";
 import "./Problems.css";
+import { Link } from "react-router-dom";
 
 const ChatList = () => {
   const state = useContext(GlobalState);
@@ -60,6 +62,18 @@ const ChatList = () => {
                 </a>
               );
             }
+          )}
+          {problems.length <= 0 && (
+            <>
+              <Error message="Вы не заполняли анкеты!" />
+              <Link
+                to="/ticket"
+                className="btn btn-primary"
+                style={{ width: "200px", margin: "0 auto" }}
+              >
+                Заполнить анкету
+              </Link>
+            </>
           )}
         </div>
       </div>
