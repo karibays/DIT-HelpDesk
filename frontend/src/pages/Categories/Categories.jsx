@@ -40,15 +40,15 @@ const Categories = () => {
   const [error, setError] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(1);
 
-  // const handleSearch = (e) => {
-  //   if (e.target.value.length > 3) {
-  //     setTitle(e.target.value);
-  //     axios
-  //       .get(`http://10.1.11.249:8080/problems?title=${e.target.value}`)
-  //       .then(({ data: { content } }) => setProblems(content))
-  //       .catch(() => setError(true));
-  //   } else handleSelect(1);
-  // };
+  const handleSearch = (e) => {
+    if (e.target.value.length > 3) {
+      setTitle(e.target.value);
+      axios
+        .get(`http://10.1.11.249:8080/problem?problem=${e.target.value}`)
+        .then(({ data: { content } }) => setProblems(content))
+        .catch(() => setError(true));
+    } else handleSelect(1);
+  };
 
   const handleSelect = (selectedCategory) => {
     setLoading(true);
@@ -80,7 +80,7 @@ const Categories = () => {
               type="text"
               placeholder="Поиск проблемы"
               id="inputLarge"
-              // onChange={handleSearch}
+              onChange={handleSearch}
             />
           </div>
           <div className="categories-content">
