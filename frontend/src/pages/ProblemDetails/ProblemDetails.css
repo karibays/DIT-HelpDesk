@@ -1,0 +1,12 @@
+.problem-container {
+  width: 700px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+.problem-createdAt {
+  display: block;
+}

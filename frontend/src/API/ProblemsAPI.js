@@ -8,24 +8,18 @@ function ProblemsAPI() {
   const { users, loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(loggedIn)
     if (!loggedIn) {
-      console.log("logged out, problems deleted");
       setAllProblems([]);
       setProblems([]);
       return;
     }
-    if(users) {
-      if (users.role == "ADMIN") {
-        console.log("Get all Problems");
-        axios.get(`http://10.1.11.249:8080/problems/status/1`).then((res) => {
-          setAllProblems(res.data);
-  
-          console.log(res.data);
-        });
-      }
+    if (users) {
+      if (users.role == "ADMIN")
+        axios
+          .get(`http://10.1.11.249:8080/problems/status/1`)
+          .then((res) => setAllProblems(res.data));
+
       if (users.role == "USER") {
-        console.log("Get Problems");
         axios
           .get(`http://10.1.11.249:8080/problems/user/${users.id}`)
           .then((res) => {
