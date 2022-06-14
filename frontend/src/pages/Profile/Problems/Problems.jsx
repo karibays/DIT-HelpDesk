@@ -40,7 +40,7 @@ const ChatList = () => {
               return (
                 <a
                   onClick={() => {
-                    navigate("/details", { state: id });
+                    navigate("/details", { state: { id } });
                   }}
                   className="problems-item list-group-item list-group-item-action mt-2"
                   key={id}

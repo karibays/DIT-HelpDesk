@@ -4,11 +4,12 @@ import Badge from "../Profile/Badge";
 import axios from "axios";
 import { fetchUser } from "../../utils/userLocalStorage";
 import { GlobalState } from "../../components/Context/GloblalState";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminHome = () => {
   const state = useContext(GlobalState);
-
+  const adminState = true;
+  const navigate = useNavigate();
   const allProblems = state.problemsAPI.allProblems;
 
   return (
@@ -23,33 +24,62 @@ const AdminHome = () => {
             id="inputLarge"
             // onChange={handleSearch}
           />
-          <div className="mt-4" >
-          {allProblems.map(
-            ({ id, title, description, createdAt, category, status, user }) => {
-              return (
-                <Link 
-                  to='/categories'
-                  className="problems-item list-group-item list-group-item-action mt-2"
-                  key={id}
-                >
-                  <div className="problems-block">
-                    <div className="problems-content">
-                      <Badge status={status?.id} />
-                      <h4>{title}</h4>
-                      <h6 className="text-muted">{category?.categoryName}</h6>
-                      <p>{description}</p>
-                      <p>{user?.barcode}</p>
-                      <small className="text-muted">
-                        Создано в {createdAt.slice(0, 10)}
-                      </small>
+          <div className="mt-4">
+            {allProblems.map(
+              ({
+                id,
+                title,
+                description,
+                createdAt,
+                category,
+                status,
+                user,
+              }) => {
+                return (
+                  <a
+                    onClick={() => {
+                      navigate("/details", { state: { id, adminState } });
+                    }}
+                    className="problems-item list-group-item list-group-item-action mt-2"
+                    key={id}
+                  >
+                    {/* <div className="problems-block">
+                      <div className="problems-content">
+                        <Badge status={status?.id} />
+                        <h4>{title}</h4>
+                        <h6 className="text-muted">#{id}</h6>
+                        <h6 className="text-muted">{category?.categoryName}</h6>
+                        <p>{description}</p>
+                        <p className="text-muted">
+                          Пользователь: #{user?.barcode}
+                        </p>
+                        <small className="text-muted">
+                          Создано в {createdAt.slice(0, 10)}
+                        </small>
+                      </div>
+                    </div> */}
+                    <div className="problems-block">
+                      <div className="problems-content">
+                        <Badge status={status?.id} />
+                        <h4>{title}</h4>
+                        <h6 className="text-muted">#{id}</h6>
+                        <h6 className="text-muted">{category?.categoryName}</h6>
+                        <p className="text-muted">
+                          Пользователь: #{user?.barcode}
+                        </p>
+                        <p>{description}</p>
+                        <small className="text-muted">
+                          Создано в {createdAt.slice(0, 10)}{" "}
+                          {createdAt.slice(11, 19)}
+                        </small>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              );
-            }
-          )}
+                  </a>
+                );
+              }
+            )}
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
