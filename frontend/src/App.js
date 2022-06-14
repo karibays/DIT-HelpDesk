@@ -10,7 +10,7 @@ import {
   AdminPage,
   Login,
   AdminHome,
-  ProblemDetails
+  ProblemDetails,
 } from "./pages";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { fetchUser } from "./utils/userLocalStorage";
@@ -32,6 +32,7 @@ const App = () => {
             <Route path="/*" element={<AdminHome />} />
             <Route path="adminPage" element={<AdminPage />} />
             <Route path="categories" element={<Categories admin={true} />} />
+            <Route path="details" element={<ProblemDetails />} />
           </>
         ) : (
           <>
@@ -40,7 +41,7 @@ const App = () => {
             {/* <Route path="forum" element={<NoPage />} /> */}
             <Route path="ticket" element={<Ticket />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="details" element={<ProblemDetails/>}/>
+            <Route path="details" element={<ProblemDetails />} />
           </>
         )}
         <Route path="login" element={<Login />} />
