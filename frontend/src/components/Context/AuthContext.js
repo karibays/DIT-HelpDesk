@@ -12,13 +12,11 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = () => {
     if (localStorage.getItem("user") === null) {
-      
       setUsers("");
       return;
     }
     setUsers(JSON.parse(localStorage.getItem("user")));
     setLoggedIn(true);
-   
   };
 
   const setUser = (data) => {
@@ -28,7 +26,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUser();
-    console.log("fech user")
   }, [loggedIn]);
 
   return (
