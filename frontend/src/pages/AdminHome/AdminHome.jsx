@@ -37,9 +37,6 @@ const AdminHome = () => {
               }) => {
                 return (
                   <a
-                    onClick={() => {
-                      navigate("/details", { state: { id, adminState } });
-                    }}
                     className="problems-item list-group-item list-group-item-action mt-2"
                     key={id}
                   >
@@ -73,6 +70,17 @@ const AdminHome = () => {
                           {createdAt.slice(11, 19)}
                         </small>
                       </div>
+                      <div className="problems-btns">
+                   <button
+                       type="button"
+                       className="btn btn-outline-primary"
+                       onClick={() => {
+                        navigate("/details", { state: { id, adminState } });
+                      }}
+                     >
+                       Открыть
+                     </button>
+                    </div>
                     </div>
                   </a>
                 );

@@ -9,6 +9,8 @@ import "./ProblemDetails.css";
 const ProblemDetails = () => {
   const location = useLocation();
   const [problem, setProblem] = useState({});
+  const [comments, setComments] = useState([])
+  const [message, setMessage] = useState()
   const { id, adminState } = location.state;
 
   const handleStatus = (statusId) => {
@@ -21,7 +23,7 @@ const ProblemDetails = () => {
 
     comment = {
       userId: id,
-      message: "hello there",
+      message: message,
     };
 
     axios
@@ -57,6 +59,14 @@ const ProblemDetails = () => {
       .then(({ data }) => {
         console.log(data);
         setProblem(data);
+      })
+      .catch((err) => console.log(err));
+
+      axios
+      .get(`http://10.1.11.249:8080/comment/${id}`)
+      .then(({ data }) => {
+        console.log(data);
+        setComments(data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -118,14 +128,38 @@ const ProblemDetails = () => {
           Что вы испробовали для решения проблемы?
         </h5>
         <p>{problem.consequences ? problem.consequences : "Не заполнено"}</p>
+
+        <div className="mt-4 mb-4">
+            {comments.map(
+              ({
+                id,
+                message,
+                createdDate
+              }) => {
+                return (
+                  
+                  <div className="card mt-3 p-2" key={id}>
+                    <p>Ответ администрации</p>
+                   <p className="">{message}</p>
+                   <small className="text-muted">
+                          Создано в {createdDate.slice(0, 10)}{" "}
+                          {createdDate.slice(11, 19)}
+                      </small>
+                  </div>
+                );
+              }
+            )}
+          </div>
         {adminState && (
           <div className="admin-comment-input d-flex align-self-start">
             <div class="form-group w-100 mt-1">
               <textarea
                 class="form-control"
                 id="exampleTextarea"
+                value={message}
                 rows="1"
                 placeholder="Оставьте комментарий..."
+                onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
             <div class="dropdown pl-1">
