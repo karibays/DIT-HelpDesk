@@ -11,6 +11,14 @@ const AdminHome = () => {
   const adminState = true;
   const navigate = useNavigate();
   const allProblems = state.problemsAPI.allProblems;
+  const [status, setStatus] = state.problemsAPI.status
+  const [statuses, setStatuses] = state.statusesAPI.statuses
+
+
+  const handleStatus = e => {
+
+    setStatus(e.target.value)
+  }
 
   return (
     <>
@@ -22,8 +30,20 @@ const AdminHome = () => {
             type="text"
             placeholder="Поиск проблемы"
             id="inputLarge"
-            // onChange={handleSearch}
+          // onChange={handleSearch}
           />
+
+
+          <select name="status" value={status} onChange={handleStatus} class="form-select mt-4" id="exampleSelect1">
+            {
+              statuses.map(obj => (
+                <option value={obj.id} key={obj.id}>
+                  {obj.statusName}
+                </option>
+              ))
+            }
+          </select>
+
           <div className="mt-4">
             {allProblems.map(
               ({
@@ -71,16 +91,16 @@ const AdminHome = () => {
                         </small>
                       </div>
                       <div className="problems-btns">
-                   <button
-                       type="button"
-                       className="btn btn-outline-primary"
-                       onClick={() => {
-                        navigate("/details", { state: { id, adminState } });
-                      }}
-                     >
-                       Открыть
-                     </button>
-                    </div>
+                        <button
+                          type="button"
+                          className="btn btn-outline-primary"
+                          onClick={() => {
+                            navigate("/details", { state: { id, adminState } });
+                          }}
+                        >
+                          Открыть
+                        </button>
+                      </div>
                     </div>
                   </a>
                 );

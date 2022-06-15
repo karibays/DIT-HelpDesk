@@ -9,6 +9,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 const ChatList = () => {
   const state = useContext(GlobalState);
   const [problems, setProblems] = state.problemsAPI.problems;
+  const [status, setStatus] = state.problemsAPI.status
+  const [statuses, setStatuses] = state.statusesAPI.statuses
   const navigate = useNavigate();
 
   function deleteProblem(id, title) {
@@ -27,6 +29,11 @@ const ChatList = () => {
         .catch((err) => console.warn(err));
   }
 
+  const handleStatus = e => {
+
+    setStatus(e.target.value)
+  }
+
   return (
     <div className="container">
       <div className="problems-container">
@@ -34,6 +41,18 @@ const ChatList = () => {
         <h4 className="text-muted fw-normal">
           Найдено {problems.length} анкет
         </h4>
+
+        
+        <select name="status" value={status} onChange={handleStatus} class="form-select mt-4" id="exampleSelect1">
+            {
+              statuses.map(obj => (
+                <option value={obj.id} key={obj.id}>
+                  {obj.statusName}
+                </option>
+              ))
+            }
+          </select>
+
         <div className="problems-items list-group">
           {problems.map(
             ({ id, title, description, createdAt, category, status }) => {
