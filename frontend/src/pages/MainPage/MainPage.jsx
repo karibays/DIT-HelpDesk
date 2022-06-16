@@ -248,7 +248,7 @@ const MainPage = () => {
             <h3 className="head" align="center">
               Не можете решить проблему?
             </h3>
-            
+
           </div>
           <div className="ticket-container container">
             <h2 className="text-white">Заполнить анкету</h2>
@@ -262,7 +262,7 @@ const MainPage = () => {
                   Выберите категорию
                 </label>
                 <select
-                  className="form-select text-white"
+                  className="form-select"
                   id="exampleSelect1"
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
@@ -325,8 +325,8 @@ const MainPage = () => {
                 <input className="form-control" type="file" id="formFile" />
               </div>
 
-              <button type="submit" className="btn btn-primary btn-lg mb-4">
-                Отправить
+              <button type="submit" className="catalogButton2">
+                Отправить анкету
               </button>
 
 
