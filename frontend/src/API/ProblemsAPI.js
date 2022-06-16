@@ -10,7 +10,6 @@ function ProblemsAPI() {
 
   useEffect(() => {
     if (!loggedIn) {
-      console.log("logout")
       setAllProblems([]);
       setProblems([]);
       return;
