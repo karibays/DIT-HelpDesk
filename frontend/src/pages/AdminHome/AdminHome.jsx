@@ -38,6 +38,7 @@ const AdminHome = () => {
   };
 
   const handleStatus = (statusId) => {
+    console.log(statusId)
     if (statusId == 0) {
       axios
         .get("http://10.1.11.249:8080/problems")

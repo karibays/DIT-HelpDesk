@@ -11,12 +11,14 @@ export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const fetchUser = () => {
+    console.log(localStorage.getItem("user"));
+    setLoggedIn(true);
     if (localStorage.getItem("user") === null) {
       setUsers("");
       return;
     }
     setUsers(JSON.parse(localStorage.getItem("user")));
-    setLoggedIn(true);
+   
   };
 
   const setUser = (data) => {

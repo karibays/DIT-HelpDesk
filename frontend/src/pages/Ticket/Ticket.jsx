@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../../components/NavBar";
-import { fetchUser } from "../../utils/userLocalStorage";
 import "./Ticket.css";
+import { useContext } from "react";
+import { AuthContext } from "../../components/Context/AuthContext";
 
 const Ticket = () => {
   const navigate = useNavigate();
-  const { id } = fetchUser();
+  const { users} = useContext(AuthContext)
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [selectOptions, setSelectOptions] = useState([]);
   const [title, setTitle] = useState("");
@@ -23,7 +24,7 @@ const Ticket = () => {
       question: action,
       consequences: consequences,
       action: solution,
-      userId: id,
+      userId: users.id,
       categoryId: selectedCategory,
     };
 
@@ -128,7 +129,7 @@ const Ticket = () => {
             <input className="form-control" type="file" id="formFile" />
           </div>
 
-          <button type="submit" className="btn btn-primary btn-lg">
+          <button type="submit" className="btn btn-primary btn-lg mb-4">
             Отправить
           </button>
         </form>
