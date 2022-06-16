@@ -8,6 +8,13 @@
   padding: 20px;
   color: #000;
   border-radius: 10px;
+  transition: 0.2s all ease-in-out;
+}
+
+.problems-item:hover {
+  background-color: rgb(247, 247, 247);
+  color: #000;
+  transition: 0.2s all ease-in-out;
 }
 
 .problems-content {
