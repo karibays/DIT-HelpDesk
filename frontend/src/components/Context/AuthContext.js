@@ -28,6 +28,10 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, [loggedIn]);
 
+  const clearStorage = () => {
+      localStorage.clear();
+    };
+
   return (
     <AuthContext.Provider
       value={{
@@ -35,6 +39,7 @@ export const AuthProvider = ({ children }) => {
         setUser,
         loggedIn,
         setLoggedIn,
+        clearStorage,
       }}
     >
       {children}

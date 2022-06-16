@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useCookies } from "react-cookie";
+import { AuthContext } from "../../../components/Context/AuthContext";
 import { fetchUser } from "../../../utils/userLocalStorage";
 import "./ProfileInfo.css";
 
@@ -10,13 +12,13 @@ const ProfileInfo = () => {
   const [barcode, setBarcode] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { users, loggedIn } = useContext(AuthContext)
 
   useEffect(() => {
-    const { id, barcode } = fetchUser();
-    setName(id);
-    setBarcode(barcode);
+    setName(users.id);
+    setBarcode(users.barcode);
     setLoading(false);
-  }, [error]);
+  }, [users, error]);
 
   return error ? (
     <div className="container">

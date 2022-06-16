@@ -71,6 +71,7 @@ const Login = () => {
           )}
 
           <button
+            id="btnPermissions"
             onClick={handleLogIn}
             className={
               isLoading

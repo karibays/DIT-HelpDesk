@@ -5,7 +5,6 @@ import axios from "axios";
 import { fetchUser } from "../../utils/userLocalStorage";
 
 const AdminPage = () => {
-  const { id } = fetchUser();
   const [barcode, setBarcode] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
