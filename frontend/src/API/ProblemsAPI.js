@@ -6,10 +6,11 @@ function ProblemsAPI() {
   const [problems, setProblems] = useState([]);
   const [allProblems, setAllProblems] = useState([]);
   const { users, loggedIn } = useContext(AuthContext);
-  const [status, setStatus] = useState(0);
+  const [selectedStatus, setSelectedStatus] = useState(0);
 
   useEffect(() => {
     if (!loggedIn) {
+      console.log("logout")
       setAllProblems([]);
       setProblems([]);
       return;
@@ -17,7 +18,7 @@ function ProblemsAPI() {
     if (users) {
       if (users.role == "ADMIN")
         axios
-          .get(`http://10.1.11.249:8080/problems/status/${status}`)
+          .get(`http://10.1.11.249:8080/problems/status/${selectedStatus}`)
           .then((res) => setAllProblems(res.data));
 
       if (users.role == "USER") {
@@ -36,12 +37,12 @@ function ProblemsAPI() {
           });
       }
     }
-  }, [users, loggedIn, status]);
+  }, [users, loggedIn, selectedStatus]);
 
   return {
     problems: [problems, setProblems],
     allProblems: [allProblems, setAllProblems],
-    status: [status, setStatus],
+    status: [selectedStatus, setSelectedStatus],
   };
 }
 

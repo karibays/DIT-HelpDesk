@@ -11,7 +11,7 @@ const AdminHome = () => {
   const adminState = true;
   const navigate = useNavigate();
   const [allProblems, setAllProblems] = problemsAPI.allProblems;
-  const [status, setStatus] = problemsAPI.status;
+  const [selectedStatus, setSelectedStatus] = problemsAPI.status;
   const [statuses, setStatuses] = statusesAPI.statuses;
   const [error, setError] = useState(false);
   const handleSearch = (str) => {
@@ -50,7 +50,7 @@ const AdminHome = () => {
           )
         )
         .catch(() => setError(true));
-    } else setStatus(statusId);
+    } else setSelectedStatus(statusId);
   };
 
   useEffect(() => {

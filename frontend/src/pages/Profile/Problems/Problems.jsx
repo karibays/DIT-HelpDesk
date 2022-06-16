@@ -9,7 +9,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 const ChatList = () => {
   const { problemsAPI, statusesAPI } = useContext(GlobalState);
   const [problems, setProblems] = problemsAPI.problems;
-  const [status, setStatus] = problemsAPI.status;
+  const [selectedStatus, setSelectedStatus] = problemsAPI.status;
   const [statuses, setStatuses] = statusesAPI.statuses;
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const ChatList = () => {
   }
 
   const handleStatus = (e) => {
-    setStatus(e.target.value);
+    setSelectedStatus(e);
   };
 
   return (
@@ -58,35 +58,39 @@ const ChatList = () => {
         <div className="problems-items list-group mt-3">
           {problems.map(
             ({ id, title, description, createdAt, category, status }) => {
-              return (
-                <div className="problems-item mb-3" key={id}>
-                  <div className="problems-block">
-                    <div
-                      className="problems-content"
-                      onClick={() => {
-                        navigate("/details", { state: { id } });
-                      }}
-                    >
-                      <Badge status={status?.id} />
-                      <h4>{title}</h4>
-                      <h6 className="text-muted">{category?.categoryName}</h6>
-                      <p>{description}</p>
-                      <small className="text-muted">
-                        Создано в {createdAt.slice(0, 10)}
-                      </small>
-                    </div>
-                    <div className="problems-btns">
-                      <button
-                        type="button"
-                        className="btn btn-outline-danger"
-                        onClick={() => deleteProblem(id, title)}
+              if(status?.id == selectedStatus || selectedStatus == 0) {
+                return (
+            
+                  <div className="problems-item mb-3" key={id}>
+                    <div className="problems-block">
+                      <div
+                        className="problems-content"
+                        onClick={() => {
+                          navigate("/details", { state: { id } });
+                        }}
                       >
-                        Удалить
-                      </button>
+                        <Badge status={status?.id} />
+                        <h4>{title}</h4>
+                        <h6 className="text-muted">{category?.categoryName}</h6>
+                        <p>{description}</p>
+                        <small className="text-muted">
+                          Создано в {createdAt.slice(0, 10)}
+                        </small>
+                      </div>
+                      <div className="problems-btns">
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger"
+                          onClick={() => deleteProblem(id, title)}
+                        >
+                          Удалить
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
+                );
+              }
+             
             }
           )}
           {problems.length <= 0 && (
