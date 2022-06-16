@@ -7,10 +7,10 @@ import "./Problems.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const ChatList = () => {
-  const state = useContext(GlobalState);
-  const [problems, setProblems] = state.problemsAPI.problems;
-  const [status, setStatus] = state.problemsAPI.status
-  const [statuses, setStatuses] = state.statusesAPI.statuses
+  const { problemsAPI, statusesAPI } = useContext(GlobalState);
+  const [problems, setProblems] = problemsAPI.problems;
+  const [status, setStatus] = problemsAPI.status;
+  const [statuses, setStatuses] = statusesAPI.statuses;
   const navigate = useNavigate();
 
   function deleteProblem(id, title) {
@@ -29,10 +29,9 @@ const ChatList = () => {
         .catch((err) => console.warn(err));
   }
 
-  const handleStatus = e => {
-
-    setStatus(e.target.value)
-  }
+  const handleStatus = (e) => {
+    setStatus(e.target.value);
+  };
 
   return (
     <div className="container">
@@ -42,16 +41,20 @@ const ChatList = () => {
           Найдено {problems.length} анкет
         </h4>
 
-        
-        <select name="status" value={status} onChange={handleStatus} class="form-select mt-4" id="exampleSelect1">
-            {
-              statuses.map(obj => (
-                <option value={obj.id} key={obj.id}>
-                  {obj.statusName}
-                </option>
-              ))
-            }
-          </select>
+        <select
+          name="status"
+          value={status}
+          onChange={handleStatus}
+          class="form-select mt-4"
+          id="exampleSelect1"
+        >
+          <option value="#">Не выбрано</option>
+          {statuses.map((obj) => (
+            <option value={obj.id} key={obj.id}>
+              {obj.statusName}
+            </option>
+          ))}
+        </select>
 
         <div className="problems-items list-group">
           {problems.map(
@@ -72,7 +75,7 @@ const ChatList = () => {
                       </small>
                     </div>
                     <div className="problems-btns">
-                    <button
+                      <button
                         type="button"
                         className="btn btn-outline-primary"
                         onClick={() => {

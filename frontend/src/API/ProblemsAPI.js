@@ -6,7 +6,7 @@ function ProblemsAPI() {
   const [problems, setProblems] = useState([]);
   const [allProblems, setAllProblems] = useState([]);
   const { users, loggedIn } = useContext(AuthContext);
-  const [status, setStatus] = useState(1);
+  const [status, setStatus] = useState(0);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -40,8 +40,8 @@ function ProblemsAPI() {
 
   return {
     problems: [problems, setProblems],
-    allProblems,
-    status: [status, setStatus]
+    allProblems: [allProblems, setAllProblems],
+    status: [status, setStatus],
   };
 }
 
