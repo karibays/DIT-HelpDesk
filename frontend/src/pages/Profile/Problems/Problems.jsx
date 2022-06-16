@@ -43,12 +43,11 @@ const ChatList = () => {
 
         <select
           name="status"
-          value={status}
-          onChange={handleStatus}
-          class="form-select mt-4"
+          onChange={(e) => handleStatus(e.target.value)}
+          class="form-select mt-4 col-2"
           id="exampleSelect1"
         >
-          <option value="#">Не выбрано</option>
+          <option value={0}>Не выбрано</option>
           {statuses.map((obj) => (
             <option value={obj.id} key={obj.id}>
               {obj.statusName}
@@ -56,16 +55,18 @@ const ChatList = () => {
           ))}
         </select>
 
-        <div className="problems-items list-group">
+        <div className="problems-items list-group mt-3">
           {problems.map(
             ({ id, title, description, createdAt, category, status }) => {
               return (
-                <a
-                  className="problems-item list-group-item list-group-item-action mt-2"
-                  key={id}
-                >
+                <div className="problems-item mb-3" key={id}>
                   <div className="problems-block">
-                    <div className="problems-content">
+                    <div
+                      className="problems-content"
+                      onClick={() => {
+                        navigate("/details", { state: { id } });
+                      }}
+                    >
                       <Badge status={status?.id} />
                       <h4>{title}</h4>
                       <h6 className="text-muted">{category?.categoryName}</h6>
@@ -77,15 +78,6 @@ const ChatList = () => {
                     <div className="problems-btns">
                       <button
                         type="button"
-                        className="btn btn-outline-primary"
-                        onClick={() => {
-                          navigate("/details", { state: { id } });
-                        }}
-                      >
-                        Открыть
-                      </button>
-                      <button
-                        type="button"
                         className="btn btn-outline-danger"
                         onClick={() => deleteProblem(id, title)}
                       >
@@ -93,7 +85,7 @@ const ChatList = () => {
                       </button>
                     </div>
                   </div>
-                </a>
+                </div>
               );
             }
           )}

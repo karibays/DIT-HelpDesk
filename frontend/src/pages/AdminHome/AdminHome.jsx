@@ -54,7 +54,7 @@ const AdminHome = () => {
   };
 
   useEffect(() => {
-    handleStatus(status);
+    handleStatus(0);
   }, []);
 
   return (
@@ -116,7 +116,12 @@ const AdminHome = () => {
                       </div>
                     </div> */}
                     <div className="problems-block">
-                      <div className="problems-content">
+                      <div
+                        className="problems-content"
+                        onClick={() => {
+                          navigate("/details", { state: { id, adminState } });
+                        }}
+                      >
                         <Badge status={status?.id} />
                         <h4>{title}</h4>
                         <h6 className="text-muted">#{id}</h6>
@@ -129,17 +134,6 @@ const AdminHome = () => {
                           Создано в {createdAt.slice(0, 10)}{" "}
                           {createdAt.slice(11, 19)}
                         </small>
-                      </div>
-                      <div className="problems-btns">
-                        <button
-                          type="button"
-                          className="btn btn-outline-primary"
-                          onClick={() => {
-                            navigate("/details", { state: { id, adminState } });
-                          }}
-                        >
-                          Открыть
-                        </button>
                       </div>
                     </div>
                   </a>

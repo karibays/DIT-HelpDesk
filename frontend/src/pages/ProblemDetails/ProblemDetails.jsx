@@ -9,8 +9,8 @@ import "./ProblemDetails.css";
 const ProblemDetails = () => {
   const location = useLocation();
   const [problem, setProblem] = useState({});
-  const [comments, setComments] = useState([])
-  const [message, setMessage] = useState()
+  const [comments, setComments] = useState([]);
+  const [message, setMessage] = useState();
   const { id, adminState } = location.state;
 
   const handleStatus = (statusId) => {
@@ -62,7 +62,7 @@ const ProblemDetails = () => {
       })
       .catch((err) => console.log(err));
 
-      axios
+    axios
       .get(`http://10.1.11.249:8080/comment/${id}`)
       .then(({ data }) => {
         console.log(data);
@@ -130,26 +130,22 @@ const ProblemDetails = () => {
         <p>{problem.consequences ? problem.consequences : "Не заполнено"}</p>
 
         <div className="mt-4 mb-4">
-            {comments.map(
-              ({
-                id,
-                message,
-                createdDate
-              }) => {
-                return (
-                  
-                  <div className="card mt-3 p-2" key={id}>
-                    <p>Ответ администрации</p>
-                   <p className="">{message}</p>
-                   <small className="text-muted">
-                          Создано в {createdDate.slice(0, 10)}{" "}
-                          {createdDate.slice(11, 19)}
-                      </small>
-                  </div>
-                );
-              }
-            )}
-          </div>
+          {comments.map(({ id, message, createdDate }) => {
+            return (
+              <div className="card mt-3 p-2" key={id}>
+                <p>
+                  <span className="text-muted">Ответ администрации </span>{" "}
+                  <br />
+                  {message}{" "}
+                </p>
+                <small className="text-muted">
+                  Создано в {createdDate.slice(0, 10)}{" "}
+                  {createdDate.slice(11, 19)}
+                </small>
+              </div>
+            );
+          })}
+        </div>
         {adminState && (
           <div className="admin-comment-input d-flex align-self-start">
             <div class="form-group w-100 mt-1">
@@ -164,7 +160,7 @@ const ProblemDetails = () => {
             </div>
             <div class="dropdown pl-1">
               <button
-                class="btn btn-outline-info btn-lg dropdown-toggle"
+                class="btn btn-outline-info px-3 py-1 dropdown-toggle"
                 type="button"
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
