@@ -1,9 +1,5 @@
 ﻿# Source code documentation
 
-
-
-
-# Frontend
 ## Авторизация
 
 Включение в проект Axios для взаимодействия с REST API
