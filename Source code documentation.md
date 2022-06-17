@@ -32,7 +32,7 @@ function navigateByRole(role) {
 ```
 
 
-Handle login
+Функция входа в HelpDesk
 ```javascript
 function handleLogIn() {
   const form_data = new FormData();
@@ -79,7 +79,7 @@ const [consequences, setConsequences] = useState("");
 const [solution, setSolution] = useState("");
 ```
 
-Submit problem
+Форма отправки запроса
 ```javascript
 const problemSubmit = async (e) => {
   e.preventDefault();
@@ -94,7 +94,7 @@ const problemSubmit = async (e) => {
 };
 ```
 
-Используем Axios
+Используем Axios для получения запроса
 ```javascript
 axios
 .post(`http://10.1.11.249:8080/problems`, form_data, {
@@ -128,7 +128,7 @@ useEffect(() => {
 ## Главная страница (вид администратора)
 
  
- Admin function
+Функция админа
  ```javascript
  const readAdminFunc = async (e) => {  
   e.preventDefault();  
@@ -147,7 +147,7 @@ useEffect(() => {
 };
 ```
 
-Create Admin function
+создание функции администратора
 ```javascript
 const createAdminFunc = async (e) => {  
   e.preventDefault();  
@@ -163,7 +163,7 @@ const createAdminFunc = async (e) => {
   };
   ```
 
-Axios
+Получения запроса
 ```javascript
  axios  
   .post(`http://10.1.11.249:8080/user/createAdmin`, form_data, {  
@@ -182,7 +182,7 @@ Axios
 };
 ```
 
-Update role
+Обновление роли
 ```javascript
 const updateRoleFunc = async (e) => {  
   let form_data = new FormData();  
@@ -193,7 +193,7 @@ const updateRoleFunc = async (e) => {
   };
   ```
 
-axios
+Получение запроса
 ```javascript
 axios  
   .put(`http://10.1.11.249:8080/user/` + anotherId + ``, form_data, {  
@@ -211,7 +211,7 @@ axios
   });  
 };
 ```
-Delete function
+Функция удаления аккаунта
 ```javascript
 const deleteFunc = (e) => {  
   e.preventDefault();  
