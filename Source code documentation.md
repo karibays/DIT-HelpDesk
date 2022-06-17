@@ -31,57 +31,31 @@ const Login = () => {
 fsdf
 ```
 function handleLogIn() {
-
-const form_data = new FormData();
-
-setIsLoading(true);
-
-form_data.append("barcode", barcode);
-
-axios
-
-.post(`http://10.1.11.249:8080/problem/get_user_id/`, form_data, {
-
-headers: {
-
-"content-type": "application/json",
-
-},
-
-})
-
-.then(({ data }) => {
-
-if (data) {
-
-setUser(data);
-
-navigateByRole(data.role);
-
-} else {
-
-setloginInputClasses((prev) => (prev += " is-invalid"));
-
-setError(true);
-
-}
-
-setIsLoading(false);
-
-})
-
-.catch((error) => {
-
-console.warn(error);
-
-setloginInputClasses((prev) => (prev += " is-invalid"));
-
-setError(true);
-
-setIsLoading(false);
-
-});
-
+  const form_data = new FormData();
+  setIsLoading(true);
+  form_data.append("barcode", barcode);
+  axios
+  .post(`http://10.1.11.249:8080/problem/get_user_id/`, form_data, {
+    headers: {
+    "content-type": "application/json",
+    },
+  })
+  .then(({ data }) => {
+    if (data) {
+      setUser(data);
+      navigateByRole(data.role);
+    } else {
+      setloginInputClasses((prev) => (prev += " is-invalid"));
+      setError(true);
+    }
+    setIsLoading(false);
+  })
+  .catch((error) => {
+    console.warn(error);
+    setloginInputClasses((prev) => (prev += " is-invalid"));
+    setError(true);
+    setIsLoading(false);
+  });
 }
 ```
 
@@ -90,101 +64,61 @@ setIsLoading(false);
 Обьявление новых переменных состояния "MainPage"
 ```
 const MainPage = () => {
-
 const { users } = useContext(AuthContext);
-
 const navigate = useNavigate();
-
 const id = users.id
-
 const [selectedCategory, setSelectedCategory] = useState(1);
-
 const [selectOptions, setSelectOptions] = useState([]);
-
 const [title, setTitle] = useState("");
-
 const [action, setAction] = useState("");
-
 const [consequences, setConsequences] = useState("");
-
 const [solution, setSolution] = useState("");
 ```
 
 2
 ```
 const problemSubmit = async (e) => {
-
-e.preventDefault();
-
-let form_data = new FormData();
-
-form_data = {
-
-title: title,
-
-question: action,
-
-consequences: consequences,
-
-action: solution,
-
-userId: id,
-
-categoryId: selectedCategory,
-
+  e.preventDefault();
+  let form_data = new FormData();
+  form_data = {
+    title: title,
+    question: action,
+    consequences: consequences,
+    action: solution,
+    userId: id,
+    categoryId: selectedCategory,
 };
 ```
 
 3
 ```
 axios
-
 .post(`http://10.1.11.249:8080/problems`, form_data, {
-
-headers: {
-
-"content-type": "application/json",
-
-},
-
+  headers: {
+  "content-type": "application/json",
+  },
 })
-
 .then((res) => {
-
-navigate("/profile");
-
+  navigate("/profile");
 })
-
 .catch((error) => {
-
-console.warn(error);
-
+  console.warn(error);
 });
-
 };
 
 function AdminPageFunc() {
-
-navigate("/AdminPage");
-
+  navigate("/AdminPage");
 }
 ```
 4
 ```
 useEffect(() => {
-
-axios
-
-.get("http://10.1.11.249:8080/problems/categories")
-
-.then(({ data }) => {
-
-setSelectOptions(data);
-
-})
-
-.catch((err) => console.log(err));
-
+  axios
+  .get("http://10.1.11.249:8080/problems/categories")
+  .then(({ data }) => {
+    setSelectOptions(data);
+  })
+  .catch((err) => console.log(err));
 }, []);
 ```
 ## Главная страница (вид администратора)
