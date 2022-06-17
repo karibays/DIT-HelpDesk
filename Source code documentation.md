@@ -80,7 +80,7 @@ const [solution, setSolution] = useState("");
 ```
 
 2
-```
+```javascript
 const problemSubmit = async (e) => {
   e.preventDefault();
   let form_data = new FormData();
