@@ -32,7 +32,7 @@ function navigateByRole(role) {
 ```
 
 
-fsdf
+Handle login
 ```javascript
 function handleLogIn() {
   const form_data = new FormData();
@@ -79,7 +79,7 @@ const [consequences, setConsequences] = useState("");
 const [solution, setSolution] = useState("");
 ```
 
-2
+Submit problem
 ```javascript
 const problemSubmit = async (e) => {
   e.preventDefault();
@@ -94,7 +94,7 @@ const problemSubmit = async (e) => {
 };
 ```
 
-3
+Используем Axios
 ```javascript
 axios
 .post(`http://10.1.11.249:8080/problems`, form_data, {
@@ -114,7 +114,7 @@ function AdminPageFunc() {
   navigate("/AdminPage");
 }
 ```
-4
+
 ```javascript
 useEffect(() => {
   axios
@@ -128,7 +128,7 @@ useEffect(() => {
 ## Главная страница (вид администратора)
 
  
- Admin func
+ Admin funcешщт
  ```javascript
  const readAdminFunc = async (e) => {  
   e.preventDefault();  
@@ -147,7 +147,7 @@ useEffect(() => {
 };
 ```
 
-Create Admin func
+Create Admin funcешщт
 ```javascript
 const createAdminFunc = async (e) => {  
   e.preventDefault();  
@@ -211,7 +211,7 @@ axios
   });  
 };
 ```
-Delete func
+Delete funcешщт
 ```javascript
 const deleteFunc = (e) => {  
   e.preventDefault();  
@@ -238,7 +238,7 @@ const deleteFunc = (e) => {
 `QuestionList`
 `Categories`
 
-1) test test 
+1) Categories list
 ```javascript
 const CategoriesList = ({ categoriesArray, handleSelect }) => {  
   return (  
@@ -258,7 +258,7 @@ const CategoriesList = ({ categoriesArray, handleSelect }) => {
  </div>  );  
 };
 ```
-2)32213
+2) Const declaration -Questions
 ```javascript
 const Questions = ({ problem: { problem, answer } }) => {  
   return (  
@@ -269,7 +269,7 @@ const Questions = ({ problem: { problem, answer } }) => {
  </div> </div>  );  
 };
 ```
-3) 123123
+3) Question List
 ```javascript
 const QuestionsList = ({ questionsArray, loading }) => {  
   if (loading) return <Error message={"Загрузка..."} />;  
@@ -460,7 +460,7 @@ const [consequences, setConsequences] = useState("");
 const [solution, setSolution] = useState("");
 ```
 
-2
+Submit problems
 ```javascript
 const problemSubmit = async (e) => {
 e.preventDefault();
@@ -474,7 +474,7 @@ userId: users.id,
 categoryId: selectedCategory,
 };
 ```
-3
+Axios
 ```javascript
 axios
 .post(`http://10.1.11.249:8080/problems`, form_data, {
@@ -490,7 +490,7 @@ console.warn(error);
 });
 };
 ```
-4
+--
 ```javascript
 useEffect(() => {
 
