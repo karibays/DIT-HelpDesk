@@ -7,7 +7,9 @@
 ## Авторизация
 
 Включение в проект Axios для взаимодействия с REST API
-`import axios from "axios";`
+```
+import axios from "axios";
+```
 
 Обьявление новых переменных состояния.
 ```
@@ -23,9 +25,11 @@ const Login = () => {
  ```
  
 Функция навигации по роли(Студент или сотрудник).
-`function navigateByRole(role) {  
+```
+function navigateByRole(role) {  
   role === "ADMIN" ? navigate("/adminPage") : navigate("/");  
-}`
+}
+```
 
 
 fsdf
