@@ -25,7 +25,7 @@ const Login = () => {
  ```
  
 Функция навигации по роли(Студент или сотрудник).
-```
+```javascript
 function navigateByRole(role) {  
   role === "ADMIN" ? navigate("/adminPage") : navigate("/");  
 }
@@ -33,7 +33,7 @@ function navigateByRole(role) {
 
 
 fsdf
-```
+```javascript
 function handleLogIn() {
   const form_data = new FormData();
   setIsLoading(true);
@@ -66,7 +66,7 @@ function handleLogIn() {
 ## Главная страница
 
 Обьявление новых переменных состояния "MainPage"
-```
+```javascript
 const MainPage = () => {
 const { users } = useContext(AuthContext);
 const navigate = useNavigate();
@@ -95,7 +95,7 @@ const problemSubmit = async (e) => {
 ```
 
 3
-```
+```javascript
 axios
 .post(`http://10.1.11.249:8080/problems`, form_data, {
   headers: {
@@ -115,7 +115,7 @@ function AdminPageFunc() {
 }
 ```
 4
-```
+```javascript
 useEffect(() => {
   axios
   .get("http://10.1.11.249:8080/problems/categories")
@@ -129,7 +129,7 @@ useEffect(() => {
 
  
  Admin func
- ```
+ ```javascript
  const readAdminFunc = async (e) => {  
   e.preventDefault();  
  try {  
@@ -148,7 +148,7 @@ useEffect(() => {
 ```
 
 Create Admin func
-```
+```javascript
 const createAdminFunc = async (e) => {  
   e.preventDefault();  
  let form_data = new FormData();  
@@ -164,7 +164,7 @@ const createAdminFunc = async (e) => {
   ```
 
 Axios
-```
+```javascript
  axios  
   .post(`http://10.1.11.249:8080/user/createAdmin`, form_data, {  
       headers: {  
@@ -183,7 +183,7 @@ Axios
 ```
 
 Update role
-```
+```javascript
 const updateRoleFunc = async (e) => {  
   let form_data = new FormData();  
   e.preventDefault();  
@@ -194,7 +194,7 @@ const updateRoleFunc = async (e) => {
   ```
 
 axios
-```
+```javascript
 axios  
   .put(`http://10.1.11.249:8080/user/` + anotherId + ``, form_data, {  
       headers: {  
@@ -212,7 +212,7 @@ axios
 };
 ```
 Delete func
-```
+```javascript
 const deleteFunc = (e) => {  
   e.preventDefault();  
   
@@ -239,7 +239,7 @@ const deleteFunc = (e) => {
 `Categories`
 
 1) test test 
-```
+```javascript
 const CategoriesList = ({ categoriesArray, handleSelect }) => {  
   return (  
     <div>  
@@ -259,7 +259,7 @@ const CategoriesList = ({ categoriesArray, handleSelect }) => {
 };
 ```
 2)32213
-```
+```javascript
 const Questions = ({ problem: { problem, answer } }) => {  
   return (  
     <div className="question-block">  
@@ -270,7 +270,7 @@ const Questions = ({ problem: { problem, answer } }) => {
 };
 ```
 3) 123123
-```
+```javascript
 const QuestionsList = ({ questionsArray, loading }) => {  
   if (loading) return <Error message={"Загрузка..."} />;  
  else if (questionsArray.length <= 0)  
@@ -289,7 +289,7 @@ const QuestionsList = ({ questionsArray, loading }) => {
 };
 ```
 4) Categories
-```
+```javascript
 const Categories = ({ admin }) => {  
   const categoriesArray = [  
     {  
@@ -319,7 +319,7 @@ const Categories = ({ admin }) => {
   ];
   ```
   UseState case
-  ```
+  ```javascript
   const [problems, setProblems] = useState([]);  
 const [title, setTitle] = useState("");  
 const [loading, setLoading] = useState(false);  
@@ -327,7 +327,7 @@ const [error, setError] = useState(false);
 const [selectedCategory, setSelectedCategory] = useState(1);
 ```
 Handle search
-```
+```javascript
 const handleSearch = (e) => {  
   if (e.target.value.length > 3) {  
     setTitle(e.target.value);  
@@ -339,7 +339,7 @@ const handleSearch = (e) => {
 };
 ```
 HandleSelect
-```
+```javascript
 const handleSelect = (selectedCategory) => {  
   setLoading(true);  
   setTitle(  
@@ -355,13 +355,13 @@ const handleSelect = (selectedCategory) => {
 };
 ```
 AddQuestion
-```
+```javascript
 const addQuestion = () => {  
   console.log("add");  
 };
 ```
 useEffect
-```
+```javascript
 useEffect(() => {  
   setTitle("Moodle");  
   handleSelect(1);  
@@ -376,7 +376,7 @@ useEffect(() => {
 `Profile`
 
 1) Badge status
-```
+```javascript
 const Badge = ({ status }) => {  
   switch (status) {  
     case 1:  
@@ -393,7 +393,7 @@ const Badge = ({ status }) => {
 };
 ```
 2) ChatList
-```
+```javascript
 const ChatList = () => {
 
 const { problemsAPI, statusesAPI } = useContext(GlobalState);
@@ -407,7 +407,7 @@ const [statuses, setStatuses] = statusesAPI.statuses;
 const navigate = useNavigate();
  ```
  Delete problem function
- ```
+ ```javascript
 function deleteProblem(id, title) {
 
 console.log(id);
@@ -440,7 +440,7 @@ window.location.reload();
 ```
 
 Handle Status
-```
+```javascript
 const handleStatus = (e) => {
 
 setSelectedStatus(e);
@@ -448,7 +448,7 @@ setSelectedStatus(e);
 };
 ```
 3) Profile info
-```
+```javascript
 const ProfileInfo = () => {
 
 const [name, setName] = useState("");
@@ -464,7 +464,7 @@ const [error, setError] = useState(false);
 const { users, loggedIn } = useContext(AuthContext)
  ```
  useEffect
- ```
+ ```javascript
 useEffect(() => {
 
 setName(users.id);
@@ -478,7 +478,7 @@ setLoading(false);
 
 ## Страница заполнения анкеты
 
-```
+```javascript
 const Ticket = () => {
 
 const navigate = useNavigate();
@@ -499,7 +499,7 @@ const [solution, setSolution] = useState("");
 ```
 
 2
-```
+```javascript
 const problemSubmit = async (e) => {
 
 e.preventDefault();
@@ -523,7 +523,7 @@ categoryId: selectedCategory,
 };
 ```
 3
-```
+```javascript
 axios
 
 .post(`http://10.1.11.249:8080/problems`, form_data, {
@@ -551,7 +551,7 @@ console.warn(error);
 };
 ```
 4
-```
+```javascript
 useEffect(() => {
 
 axios
@@ -571,7 +571,7 @@ setSelectOptions(data);
 # Компоненты
 ## Context
 ### Auth Context:
-```
+```javascript
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -648,7 +648,7 @@ clearStorage,
 ```
 
 GlobalState:
-```
+```javascript
 export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
@@ -666,7 +666,7 @@ return <GlobalState.Provider value={state}>{children}</GlobalState.Provider>;
 };
 ```
 ## Fader
-```
+```javascript
 const Fader = ({ text }) => {
 
 const [fadeProp, setFadeProp] = useState({
@@ -729,7 +729,7 @@ text: PropTypes.string,
 ```
 ## Navigation Bar
 
-```
+```javascript
 const NavBar = ({ lightMode, admin }) => {
 
 const {setLoggedIn} = useContext(AuthContext)
@@ -743,7 +743,7 @@ const backgroundColor = lightMode
 : { backgroundColor: "#2c8dff" };
 ```
 2
-```
+```javascript
 const logoColor = lightMode ? "logo-blue" : "logo-light";
 
 const textColorClasses = lightMode
@@ -788,7 +788,7 @@ setLoggedIn(false)
 ```
 ## Notifications
 
-```
+```javascript
 const Notifications = (props) => {
 
 const [isTokenFound, setTokenFound] = useState(false);
@@ -827,7 +827,7 @@ Notifications.propTypes = {};
 ```
 ### React notifications
 1
-```
+```javascript
 const ReactNotificationComponent = ({ title, body }) => {
 
 let hideNotif = title === "";
@@ -881,7 +881,7 @@ pauseOnHover={false}
 };
 ```
 2
-```
+```javascript
 ReactNotificationComponent.defaultProps = {
 
 title: "This is title",
@@ -899,7 +899,7 @@ body: PropTypes.string,
 };
 ```
 ## User local storage
-```
+```javascript
 export const fetchUser = () => {
   const userInfo =
     localStorage.getItem("user") !== "undefined"
@@ -920,7 +920,7 @@ export const clearStorage = () => {
 
 ## API
 ### Status API:
-```
+```javascript
 function StatusesAPI() {
 
 const[statuses, setStatuses] = useState([])
@@ -951,7 +951,7 @@ statuses: [statuses, setStatuses],
 
 ### Problem API:
 
-```
+```javascript
 const [problems, setProblems] = useState([]);
 
 const [allProblems, setAllProblems] = useState([]);
@@ -963,7 +963,7 @@ const [selectedStatus, setSelectedStatus] = useState(0);
 
 
 1
-```
+```javascript
 useEffect(() => {
 
 if (!loggedIn) {
