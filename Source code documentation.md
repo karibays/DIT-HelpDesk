@@ -128,7 +128,7 @@ useEffect(() => {
 ## Главная страница (вид администратора)
 
  
- Admin funcешщт
+ Admin function
  ```javascript
  const readAdminFunc = async (e) => {  
   e.preventDefault();  
@@ -147,7 +147,7 @@ useEffect(() => {
 };
 ```
 
-Create Admin funcешщт
+Create Admin function
 ```javascript
 const createAdminFunc = async (e) => {  
   e.preventDefault();  
@@ -211,7 +211,7 @@ axios
   });  
 };
 ```
-Delete funcешщт
+Delete function
 ```javascript
 const deleteFunc = (e) => {  
   e.preventDefault();  
@@ -602,7 +602,7 @@ const backgroundColor = lightMode
 ? { backgroundColor: "white" }
 : { backgroundColor: "#2c8dff" };
 ```
-2
+Colors setting
 ```javascript
 const logoColor = lightMode ? "logo-blue" : "logo-light";
 const textColorClasses = lightMode
@@ -648,7 +648,7 @@ return <></>;
 Notifications.propTypes = {};
 ```
 ### React notifications
-1
+
 ```javascript
 const ReactNotificationComponent = ({ title, body }) => {
 let hideNotif = title === "";
@@ -677,7 +677,7 @@ pauseOnHover={false}
 );
 };
 ```
-2
+Notification container
 ```javascript
 ReactNotificationComponent.defaultProps = {
 title: "This is title",
@@ -736,7 +736,7 @@ const [selectedStatus, setSelectedStatus] = useState(0);
 ```
 
 
-1
+UseEffect function
 ```javascript
 useEffect(() => {
 if (!loggedIn) {
