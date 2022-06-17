@@ -2,14 +2,12 @@ package com.springdemo.hellow.rest;
 
 
 import com.springdemo.hellow.dto.barcode.BarcodeUserDto;
-import com.springdemo.hellow.dto.problem.ProblemReadDto;
 import com.springdemo.hellow.dto.useradmin.AdminCreateDto;
 import com.springdemo.hellow.dto.useradmin.AdminEditDto;
 import com.springdemo.hellow.dto.useradmin.AdminReadDto;
 import com.springdemo.hellow.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
+@CrossOrigin(origins = {"http://localhost:3000","http://10.1.11.249:3000"},allowedHeaders = "*")
 @RequiredArgsConstructor
 public class UserRestController {
 

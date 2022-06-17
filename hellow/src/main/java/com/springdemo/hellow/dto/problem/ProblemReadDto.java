@@ -1,6 +1,7 @@
 package com.springdemo.hellow.dto.problem;
 
 import com.springdemo.hellow.dto.category.CategoryReadDto;
+import com.springdemo.hellow.dto.comment.CommentDTO;
 import com.springdemo.hellow.dto.status.StatusReadDto;
 import lombok.Value;
 
