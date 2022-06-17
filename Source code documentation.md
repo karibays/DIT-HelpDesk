@@ -12,7 +12,7 @@ import axios from "axios";
 ```
 
 Обьявление новых переменных состояния.
-```
+```javascript
 const Login = () => {  
  const navigate = useNavigate();  
  const { setUser } = useContext(AuthContext);  
