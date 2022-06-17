@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/comment")
-@CrossOrigin(origins = {"http://localhost:3000","http://10.1.11.249:3000"},allowedHeaders = "*")
+@CrossOrigin(origins = "http://10.1.11.249:3000",allowedHeaders = "*")
 @RequiredArgsConstructor
 public class CommentRestController {
 
