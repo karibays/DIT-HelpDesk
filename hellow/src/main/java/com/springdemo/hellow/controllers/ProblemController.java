@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://10.1.11.249:3000",allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
 @RequestMapping(value = "/problem")
 @RequiredArgsConstructor
 public class ProblemController {
