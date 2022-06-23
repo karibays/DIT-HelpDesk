@@ -73,135 +73,55 @@ const MainPage = () => {
             <i className="fa fa-search" />
           </button>
         </form>
-        <form className="adminForm">
+          {/*<form className="adminForm">
           <button type="submit" className="adminButton" onClick={AdminPageFunc}>Manage Admin privileges</button>
-        </form>
+        </form>*/}
       </div>
-      <div className="FAQDiv">
+     <div className="FAQDiv">
         <div>
           <h1 className="FAQHeader">База Знаний</h1>
         </div>
+        
         <div className="FAQTypes">
           <div className="FAQQuestionType">
+          <div className="card">
+          <img></img>
             <p className="questionTypeHeader">Moodle</p>
-            <ul className="questionsList">
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">Посмотреть все вопросы →</a>
-              </li>
-            </ul>
+            <p><Link to="/categories" ><button  className="cardbutton" type="submit"  >Посмотреть все вопросы</button></Link></p>
+            </div>
           </div>
           <div className="FAQQuestionType">
+          <div className="card">
+          <img></img>
             <p className="questionTypeHeader">MS Teams</p>
-            <ul className="questionsList">
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">Посмотреть все вопросы →</a>
-              </li>
-            </ul>
+            <p><Link to="/categories" ><button  className="cardbutton" type="submit">Посмотреть все вопросы</button></Link></p>
+            </div>
           </div>
           <div className="FAQQuestionType">
+          <div className="card">
+          <img></img>
             <p className="questionTypeHeader">Platonus</p>
-            <ul className="questionsList">
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">Посмотреть все вопросы →</a>
-              </li>
-            </ul>
+            <p> <Link to="/categories" ><button  className="cardbutton" type="submit">Посмотреть все вопросы</button></Link></p>
+            </div>
           </div>
           <div className="FAQQuestionType">
-            <p className="questionTypeHeader">Проблемы с ноутбуком</p>
-            <ul className="questionsList">
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-                </a>
-              </li>
-              <li>
-                <a href="">Посмотреть все вопросы →</a>
-              </li>
-            </ul>
+          <div className="card">
+            <img></img>
+            <p className="questionTypeHeader" >Internet</p>
+            <p>
+            <Link to="/categories" ><button className="cardbutton" type="submit" >Посмотреть все вопросы</button></Link></p>
+            </div>
           </div>
         </div>
         <div>
+        <Link to="/categories" >
           <button type="submit" className="catalogButton">
             Перейти в каталог вопросов
           </button>
+          </Link>
         </div>
-      </div>
-      <div>
+      </div> 
+      {/* <div>
         <div className="container">
 
           <h3 className="FindQType">Не нашли ответ на свой вопрос? </h3>
@@ -233,7 +153,7 @@ const MainPage = () => {
             <small className="blockInfo2">Иван Иванович</small>
             <small className="blockInfo2">2 дня назад</small>
           </div>
-        </div>
+        </div>*/}
 
         {/* <div className="FindQ">
           <button type="submit" className="catalogButton">
