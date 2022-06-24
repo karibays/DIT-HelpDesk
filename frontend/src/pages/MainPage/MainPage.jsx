@@ -28,6 +28,7 @@ const MainPage = () => {
         .catch(() => setError(true));
     } ;
   };
+    
   const problemSubmit = async (e) => {
     e.preventDefault();
     let form_data = new FormData();
@@ -85,12 +86,11 @@ const MainPage = () => {
           <button type="submit" className="searchButton">
             <i className="fa fa-search" />
           </button>
-        </form>
-        {/* <form className="adminForm">
-          <button type="submit" className="adminButton" onClick={AdminPageFunc}>Manage Admin privileges</button>
-        </form>*/}
+          <QuestionsList questionsArray={problems} />
+        </form> 
+       
       </div>
-<div className="FAQDiv">
+      <div className="FAQDiv">
         <div>
           <h1 className="FAQHeader">База Знаний</h1>
         </div>
@@ -126,6 +126,10 @@ const MainPage = () => {
         <button type="submit" className="catalogButton">
             Перейти в каталог вопросов
           </button></Link>
+         
+        </div>
+      </div> 
+      
          
         </div>
       </div> 
