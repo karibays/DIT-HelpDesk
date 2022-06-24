@@ -1,0 +1,20 @@
+.question-block {
+  min-height: 50px;  max-width:800px ;
+  width: 80%;
+  background-color: white ;
+  color: #000;
+  border-radius: 0px;
+  text-align: start;
+  padding: 0%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.question-content{
+font-size: 20px;
+padding-left: 40px;
+}
+.container {
+  max-width:800px ;
+  padding-left: 60px;
+
+}
