@@ -291,9 +291,9 @@ const MainPage = () => {
           <button type="submit" className="catalogButton">
             Перейти на форум
           </button>
-        </div> */}
+        </div> 
 
-      </div>
+      </div>*/}
       <div className="Aheader">
         <div className="header">
           <div className="TOPheader">
