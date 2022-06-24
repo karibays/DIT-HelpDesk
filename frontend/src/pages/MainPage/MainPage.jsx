@@ -131,8 +131,7 @@ const MainPage = () => {
       </div> 
       
          
-        </div>
-      </div> 
+        
    {/* <div className="FAQDiv">
         <div>
           <h1 className="FAQHeader">База Знаний</h1>
