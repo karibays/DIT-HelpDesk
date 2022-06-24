@@ -2,20 +2,32 @@ import React, { useState, useContext, useEffect } from "react";
 import NavBar from "../../components/NavBar";
 import "./MainPage.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../components/Context/AuthContext";
+import QuestionsList from "../MainPage/Searchbar/Searchbar"
 
 const MainPage = () => {
   const { users } = useContext(AuthContext);
   const navigate = useNavigate();
   const id = users.id
+  const [problems, setProblems] = useState([]);
+  const [error, setError] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [selectOptions, setSelectOptions] = useState([]);
   const [title, setTitle] = useState("");
   const [action, setAction] = useState("");
   const [consequences, setConsequences] = useState("");
   const [solution, setSolution] = useState("");
-
+  
+  const handleSearch = (e) => {
+    if (e.target.value.length > 3) {
+      setTitle(e.target.value);
+      axios
+        .get(`http://10.1.11.249:8080/problem?problem=${e.target.value}`)
+        .then(({ data: { content } }) => setProblems(content))
+        .catch(() => setError(true));
+    } ;
+  };
   const problemSubmit = async (e) => {
     e.preventDefault();
     let form_data = new FormData();
@@ -68,16 +80,56 @@ const MainPage = () => {
             type="text"
             className="searchQuestion"
             placeholder="Задайте вопрос"
+            onChange={handleSearch}
           />
           <button type="submit" className="searchButton">
             <i className="fa fa-search" />
           </button>
         </form>
-        <form className="adminForm">
+        {/* <form className="adminForm">
           <button type="submit" className="adminButton" onClick={AdminPageFunc}>Manage Admin privileges</button>
-        </form>
+        </form>*/}
       </div>
-      <div className="FAQDiv">
+<div className="FAQDiv">
+        <div>
+          <h1 className="FAQHeader">База Знаний</h1>
+        </div>
+        
+        <div className="FAQTypes">
+          <div className="FAQQuestionType">
+          <div className="card">
+            <p className="questionTypeHeader">Moodle</p>
+            <p><Link to="/categories"><button  className="cardbutton" type="submit"  >Посмотреть все вопросы</button></Link></p>
+            </div>
+          </div>
+          <div className="FAQQuestionType">
+          <div className="card">
+            <p className="questionTypeHeader">MS Teams</p>
+            <p><Link to="/categories"><button  className="cardbutton" type="submit"  >Посмотреть все вопросы</button> </Link></p>
+            </div>
+          </div>
+          <div className="FAQQuestionType">
+          <div className="card">
+            <p className="questionTypeHeader">Platonus</p>
+            <p><Link to="/categories"><button  className="cardbutton" type="submit"  >Посмотреть все вопросы</button></Link></p>
+            </div>
+          </div>
+          <div className="FAQQuestionType">
+          <div className="card">
+            <p className="questionTypeHeader" >Internet</p>
+            <p><Link to="/categories"><button  className="cardbutton" type="submit"  >Посмотреть все вопросы</button></Link></p>
+            </div>
+          </div>
+        </div>
+        <div>
+        <Link to="/categories">
+        <button type="submit" className="catalogButton">
+            Перейти в каталог вопросов
+          </button></Link>
+         
+        </div>
+      </div> 
+   {/* <div className="FAQDiv">
         <div>
           <h1 className="FAQHeader">База Знаний</h1>
         </div>
@@ -235,7 +287,7 @@ const MainPage = () => {
           </div>
         </div>
 
-        {/* <div className="FindQ">
+        <div className="FindQ">
           <button type="submit" className="catalogButton">
             Перейти на форум
           </button>
